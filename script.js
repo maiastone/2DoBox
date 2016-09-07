@@ -2,8 +2,8 @@
 function addNewCard() {
   var $titleInput = $('#title').val();
   var $bodyInput = $('#body').val();
-  $('.cards').prepend($titleInput);
-  $('.cards').append($bodyInput);
+  $('.card-title').prepend($titleInput);
+  $('.card-body').append($bodyInput);
 }
 
 
