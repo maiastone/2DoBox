@@ -1,0 +1,55 @@
+
+/*font-family: 'Open Sans', sans-serif;*/
+
+h1 {
+  font-family: 'Roboto Slab', serif;
+  font-size: 24px;
+  text-align: center;
+  color: #00a79d;
+  letter-spacing: .5px;
+}
+
+.input {
+  padding: 2%;
+  background-color: #e5f3f2;
+}
+
+#title, #body, #save {
+  display: block;
+  margin: 10px auto;
+  width: 250px;
+  padding: 2px;
+
+}
+
+#save {
+  background-color: #00a79d;
+  color: #ffffff;
+  outline: 0px;
+  padding: 0px;
+  height: 30`px;
+  width: 256px;
+  border: none;
+  font-size: 1.1em;
+
+}
+
+#body {
+  padding-bottom: 75px;
+  resize: none;
+  -webkit-appearance: textfield;
+}
+
+#title, #body:focus {
+  outline: 0;
+}
+
+#box {
+  color: #6d6e71;
+}
+
+::-webkit-input-placeholder {
+  font-size: 1.1em;
+  letter-spacing: 1px;
+  padding-left: 3px;
+}
