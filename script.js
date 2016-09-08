@@ -44,12 +44,27 @@ function buildAndRenderIdea(title, body) {
   addNewCard(idea.title, idea.body, idea.id);
   var stringIdea = JSON.stringify(idea);
   localStorage.setItem('ideas', stringIdea);
+  addEntry(stringIdea);
+}
+
+
+// array of new ideas//
+// var array = JSON.parse(stringIdea);
+
+var ideaBox = [];
+// each new idea is a stringified object
+function addEntry (stringIdea) {
+  ideaBox.push(stringIdea);
 }
 
 function clearIdeaInput(){
   $('#title').val('')
   $('#body').val('')
 };
+
+
+
+
 
 
 // stringify this new idea and set it to localStorage
