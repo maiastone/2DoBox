@@ -58,7 +58,7 @@ function buildAndRenderIdea(title, body) {
 var ideaBox = [];
 // each new idea is a stringified object
 function addEntry (idea) {
-  ideaBox.push(idea);
+   ideaBox.push(idea);
 }
 
 function clearIdeaInput(){
@@ -78,7 +78,7 @@ $('ul').on('click', '.card-delete', function () {
   // console.log(this.closest('li').id);
 })
 
-
+  
 
 
 
