@@ -11,15 +11,19 @@
 // var disableSaveButton = document.querySelector('#save');
 
 function addNewCard(title, body, id) {
-  $('.card').prepend(`<section id=${id}><header><h3 class="card-title">${title}</h3>
-    <button class="card-delete">delete</button>
-  </header>
-  <p class="card-body">${body}</p>
-  <footer>
-    <button class="up-vote">up</button>
-    <button class="down-vote">down</button>
-    <p class="quality">Quality</p>
-  </footer></section>`);
+  $('.card').prepend(`
+    <li id=${id}>
+      <header>
+        <h3 class="card-title">${title}</h3>
+        <button class="card-delete">delete</button>
+      </header>
+      <p class="card-body">${body}</p>
+      <footer>
+        <button class="up-vote">up</button>
+        <button class="down-vote">down</button>
+        <p class="quality">Quality</p>
+      </footer></li>`
+    );
 }
 
 $('#save').on('click', function() {
@@ -42,9 +46,9 @@ function Idea (title, body) {
 function buildAndRenderIdea(title, body) {
   var idea = new Idea(title, body);
   addNewCard(idea.title, idea.body, idea.id);
-  var stringIdea = JSON.stringify(idea);
-  localStorage.setItem('ideas', stringIdea);
-  addEntry(stringIdea);
+  addEntry(idea);
+  var stringIdeas = JSON.stringify(ideaBox);
+  localStorage.setItem('ideas', stringIdeas);
 }
 
 
@@ -53,8 +57,8 @@ function buildAndRenderIdea(title, body) {
 
 var ideaBox = [];
 // each new idea is a stringified object
-function addEntry (stringIdea) {
-  ideaBox.push(stringIdea);
+function addEntry (idea) {
+  ideaBox.push(idea);
 }
 
 function clearIdeaInput(){
@@ -62,6 +66,17 @@ function clearIdeaInput(){
   $('#body').val('')
 };
 
+
+$('ul').on('click', '.card-delete', function () {
+  console.log('hello');
+  //this delete button
+  //this delete button has a parent with an idea id
+  this.closest('li').remove();
+
+})
+  // this.closest('li').id;
+  // console.log(this.closest('li').id);
+})
 
 
 
