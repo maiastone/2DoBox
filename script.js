@@ -1,8 +1,10 @@
 // array of new ideas//
 // var array = JSON.parse(stringIdea);
-var ideaBox;
 
-if(localStorage.ideas) {
+// var ideaBox = JSON.parse(localStorage.ideas) || []
+
+var ideaBox;
+if(localStorage.getItem('ideas')) {
   ideaBox = JSON.parse(localStorage.getItem('ideas'))
 } else {
   ideaBox = [];
@@ -25,13 +27,10 @@ function addNewCard(title, body, id) {
 }
 
 $('#save').on('click', function() {
-
   var $titleInput = $('#title').val();
   var $bodyInput = $('#body').val();
-
   buildAndRenderIdea($titleInput, $bodyInput);
   clearIdeaInput();
-
 });
 
 function Idea (title, body) {
@@ -60,7 +59,6 @@ function clearIdeaInput() {
 }
 
 $('ul').on('click', '.card-delete', function () {
-  console.log('hello');
   this.closest('li').remove();
   ideaBox.splice(this.closest('li'),1);
   stringIdeas = JSON.stringify(ideaBox);
