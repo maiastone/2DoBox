@@ -61,10 +61,10 @@ function addEntry (idea) {
   ideaBox.push(idea);
 }
 
-function clearIdeaInput(){
-  $('#title').val('')
-  $('#body').val('')
-};
+function clearIdeaInput() {
+  $('#title').val('');
+  $('#body').val('');
+}
 
 
 $('ul').on('click', '.card-delete', function () {
@@ -72,11 +72,14 @@ $('ul').on('click', '.card-delete', function () {
   //this delete button
   //this delete button has a parent with an idea id
   this.closest('li').remove();
+  ideaBox.splice(this.closest('li'),1);
+  stringIdeas = JSON.stringify(ideaBox);
+  localStorage.setItem('ideas', stringIdeas);
 
+  //delete from localStorage as well as site
 })
   // this.closest('li').id;
   // console.log(this.closest('li').id);
-})
 
 
 
