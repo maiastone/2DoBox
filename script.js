@@ -1,4 +1,14 @@
-
+// saveButtonEnabled();
+//
+// function saveButtonEnabled () {
+// if($('#title').val('') || $('#body').val('')) {
+// disableSaveButton.disabled = true;
+// } else {
+// disableSaveButton.disabled = false;
+//   }
+// };
+//
+// var disableSaveButton = document.querySelector('#save');
 
 function addNewCard(title, body, id) {
   $('.card').prepend(`<section id=${id}><header><h3 class="card-title">${title}</h3>
@@ -12,12 +22,14 @@ function addNewCard(title, body, id) {
   </footer></section>`);
 }
 
-
 $('#save').on('click', function() {
+
   var $titleInput = $('#title').val();
   var $bodyInput = $('#body').val();
 
   buildAndRenderIdea($titleInput, $bodyInput);
+  clearIdeaInput();
+
 });
 
 function Idea (title, body) {
@@ -34,6 +46,10 @@ function buildAndRenderIdea(title, body) {
   localStorage.setItem('ideas', stringIdea);
 }
 
+function clearIdeaInput(){
+  $('#title').val('')
+  $('#body').val('')
+};
 
 
 // stringify this new idea and set it to localStorage
