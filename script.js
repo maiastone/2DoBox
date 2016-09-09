@@ -17,7 +17,7 @@ function addNewCard(title, body, id) {
         <h3 class="card-title">${title}</h3>
         <button class="card-delete">delete</button>
       </header>
-      <p class="card-body">${body}</p>
+      <p class="card-body" contenteditable="true">${body}</p>
       <footer>
         <button class="up-vote">up</button>
         <button class="down-vote">down</button>
@@ -84,3 +84,37 @@ $('ul').on('click', '.card-delete', function () {
 // $('.card').on('click', '.card-delete', function() {
 //   $('.card').remove();
 // });
+
+
+
+// var i=0;
+// var qualities = ['swill', 'plausible', 'genius'];
+//
+// $.each(qualities, function(index, value){
+//   console.log(value);
+//   return (value !== 'genius');
+// });
+
+// $('.up-vote').on('click', function () {
+//
+
+// on click of upvote, loop through the array and increase the value by 1.  var current = document.querySelector("#currentnote");
+
+function vote() {
+
+  var i=0;
+  var qualities = ['swill', 'plausible', 'genius'];
+
+  $.each(qualities, function(index, value){
+    console.log(value);
+    return (value !== 'genius');
+  });
+
+  $('.up-vote').on('click', function () {
+      i = (i + 1) % qualities.length;
+      console.log(value);
+      debugger;
+      // $('.quality').replaceAll(value);
+  });
+}
+vote();
