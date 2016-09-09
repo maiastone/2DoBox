@@ -123,8 +123,15 @@ function removeIdea (id) {
 
 $('ul').on('click', '.card-delete', function () {
   ideaBox = removeIdea(this.closest('li').id)
+  debugger
   this.closest('li').remove();
   // ideaBox.splice(this.closest('li'),1);
   stringIdeas = JSON.stringify(ideaBox);
   localStorage.setItem('ideas', stringIdeas);
 })
+
+function removeIdea (id) {
+  return ideaBox.filter(function(idea){
+    return parseInt(id) !== idea.id
+  })
+}
