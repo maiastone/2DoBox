@@ -1,3 +1,4 @@
+
 // array of new ideas//
 // var array = JSON.parse(stringIdea);
 
@@ -59,7 +60,7 @@ function buildAndRenderIdea(title, body) {
 // each new idea is a stringified object
 function addEntry (idea) {
   ideaBox.push(idea);
-} 
+}
 
 function clearIdeaInput() {
   $('#title').val('');
@@ -68,9 +69,7 @@ function clearIdeaInput() {
 
 $('ul').on('click', '.card-delete', function () {
   ideaBox = removeIdea(this.closest('li').id)
-  debugger
   this.closest('li').remove();
-  // ideaBox.splice(this.closest('li'),1);
   stringIdeas = JSON.stringify(ideaBox);
   localStorage.setItem('ideas', stringIdeas);
 })
@@ -110,3 +109,22 @@ function removeIdea (id) {
 // $('.card').on('click', '.card-delete', function() {
 //   $('.card').remove();
 // });
+
+
+
+// function searchIdeas() {
+//   var $searchValue = $('#search').val();
+//   if ($inputTitle.val() || $inputBody.val() === $searchValue.val()) {
+//     ideas.document.style.visibility = visible;
+//   } else {
+//     ideas.document.style.visibility = hidden;
+//   }
+// }
+
+$('ul').on('click', '.card-delete', function () {
+  ideaBox = removeIdea(this.closest('li').id)
+  this.closest('li').remove();
+  // ideaBox.splice(this.closest('li'),1);
+  stringIdeas = JSON.stringify(ideaBox);
+  localStorage.setItem('ideas', stringIdeas);
+})
