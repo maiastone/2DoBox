@@ -14,14 +14,14 @@ function addNewCard(title, body, id) {
   $('.card').prepend(`
     <li id=${id}>
       <header>
-        <h3 class="card-title">${title}</h3>
+        <h2 class="card-title" contenteditable="true">${title}</h2>
         <button class="card-delete">delete</button>
       </header>
       <p class="card-body" contenteditable="true">${body}</p>
       <footer>
         <button class="up-vote">up</button>
         <button class="down-vote">down</button>
-        <p class="quality">Quality</p>
+        <p class="quality">quality: </p>
       </footer></li>`
     );
 }
