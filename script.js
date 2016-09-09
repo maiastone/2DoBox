@@ -3,6 +3,22 @@
 
 // var ideaBox = JSON.parse(localStorage.ideas) || []
 
+$('document').ready(function(){
+  populateDomFromLocalStorage()
+})
+
+function populateDomFromLocalStorage(){
+  // talk to local storage and grab the ideas from it (an array)
+  var ideas = JSON.parse(localStorage.getItem('ideas'))
+  // itterate through the array it gives you
+  ideas.forEach(function(idea){
+    addNewCard(idea.title, idea.body, idea.id)
+  })
+
+
+  // and then populate the dom based on the ideas coming out
+}
+
 var ideaBox;
 if(localStorage.getItem('ideas')) {
   ideaBox = JSON.parse(localStorage.getItem('ideas'))
@@ -58,12 +74,22 @@ function clearIdeaInput() {
   $('#body').val('');
 }
 
+
 $('ul').on('click', '.card-delete', function () {
+  ideaBox = removeIdea(this.closest('li').id);
   this.closest('li').remove();
-  ideaBox.splice(this.closest('li'),1);
+  // ideaBox.splice(this.closest('li'),1);
   stringIdeas = JSON.stringify(ideaBox);
   localStorage.setItem('ideas', stringIdeas);
-})
+});
+
+function removeIdea (id) {
+  return ideaBox.filter(function(idea) {
+  return parseInt(id) !== idea.id;
+  });
+}
+
+
 
 // window.onload = function keepContent () {
 //  var storedIdeas = JSON.parse.localStorage;
@@ -113,7 +139,7 @@ function vote() {
   $('.up-vote').on('click', function () {
       i = (i + 1) % qualities.length;
       console.log(value);
-      debugger;
+
       // $('.quality').replaceAll(value);
   });
 }
