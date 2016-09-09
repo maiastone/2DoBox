@@ -22,6 +22,7 @@ p {
 
 li {
   border-bottom: 1px solid #d1d3d4;
+  padding: 2px 0 2px 5px;
 }
 
 .input {
@@ -33,9 +34,23 @@ li {
   width: 225px;
 }
 
+.card-body {
+  padding: 10px 0;
+}
+
 .quality {
   color: #6d6e71;
   font-size: 10px;
+
+}
+
+#card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#card-footer {
+  display: flex;
 
 }
 
@@ -80,4 +95,9 @@ li {
   font-size: 1.1em;
   letter-spacing: 1px;
   padding-left: 3px;
+}
+
+[contenteditable="true"]:active, [contenteditable="true"]:focus {
+  border: none;
+  outline: none;
 }

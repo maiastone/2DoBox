@@ -13,12 +13,12 @@ if(localStorage.getItem('ideas')) {
 function addNewCard(title, body, id) {
   $('.card').prepend(`
     <li id=${id}>
-      <header>
-        <h2 class="card-title" contenteditable="true">${title}</h2>
+      <header id="card-header">
+        <h2 class="card-title" contenteditable="true" onkeyup="">${title}</h2>
         <button class="card-delete">delete</button>
       </header>
-      <p class="card-body" contenteditable="true">${body}</p>
-      <footer>
+      <p class="card-body" contenteditable="true" onkeyup="addEntry">${body}</p>
+      <footer id="card-footer">
         <button class="up-vote">up</button>
         <button class="down-vote">down</button>
         <p class="quality">quality: </p>
