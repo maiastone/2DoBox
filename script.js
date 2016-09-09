@@ -1,29 +1,42 @@
-// array of new ideas//
-// var array = JSON.parse(stringIdea);
-
-// var ideaBox = JSON.parse(localStorage.ideas) || []
+var ideaBox;
 
 $('document').ready(function(){
-  populateDomFromLocalStorage()
-})
+  populateDomFromLocalStorage();
+});
 
 function populateDomFromLocalStorage(){
-  // talk to local storage and grab the ideas from it (an array)
-  var ideas = JSON.parse(localStorage.getItem('ideas'))
-  // itterate through the array it gives you
+  var ideas = JSON.parse(localStorage.getItem('ideas'));
   ideas.forEach(function(idea){
-    addNewCard(idea.title, idea.body, idea.id)
-  })
-
-
-  // and then populate the dom based on the ideas coming out
+    addNewCard(idea.title, idea.body, idea.id);
+  });
 }
 
-var ideaBox;
 if(localStorage.getItem('ideas')) {
-  ideaBox = JSON.parse(localStorage.getItem('ideas'))
+  ideaBox = JSON.parse(localStorage.getItem('ideas'));
 } else {
   ideaBox = [];
+}
+
+$('#save').on('click', function() {
+  var $titleInput = $('#title').val();
+  var $bodyInput = $('#body').val();
+  buildAndRenderIdea($titleInput, $bodyInput);
+  clearIdeaInput();
+});
+
+$('ul').on('click', '.card-delete', function () {
+  ideaBox = removeIdea(this.closest('li').id);
+  this.closest('li').remove();
+  stringIdeas = JSON.stringify(ideaBox);
+  localStorage.setItem('ideas', stringIdeas);
+});
+
+
+function Idea (title, body) {
+    this.id = Date.now();
+    this.title = title;
+    this.body = body;
+    this.quality = 'swill';
 }
 
 function addNewCard(title, body, id) {
@@ -40,20 +53,6 @@ function addNewCard(title, body, id) {
         <p class="quality">quality: </p>
       </footer></li>`
     );
-}
-
-$('#save').on('click', function() {
-  var $titleInput = $('#title').val();
-  var $bodyInput = $('#body').val();
-  buildAndRenderIdea($titleInput, $bodyInput);
-  clearIdeaInput();
-});
-
-function Idea (title, body) {
-    this.id = Date.now();
-    this.title = title;
-    this.body = body;
-    this.quality = 'swill';
 }
 
 function buildAndRenderIdea(title, body) {
@@ -74,42 +73,11 @@ function clearIdeaInput() {
   $('#body').val('');
 }
 
-
-$('ul').on('click', '.card-delete', function () {
-  ideaBox = removeIdea(this.closest('li').id);
-  this.closest('li').remove();
-  // ideaBox.splice(this.closest('li'),1);
-  stringIdeas = JSON.stringify(ideaBox);
-  localStorage.setItem('ideas', stringIdeas);
-});
-
 function removeIdea (id) {
   return ideaBox.filter(function(idea) {
   return parseInt(id) !== idea.id;
   });
 }
-
-
-
-// window.onload = function keepContent () {
-//  var storedIdeas = JSON.parse.localStorage;
-//   $('.card').prepend(storedIdeas);
-// }
-
-// window.onload = function keepContent () {
-//   //  console.log();
-//   var parseIdeas = JSON.parse(localStorage.getItem(ideaBox));
-//   console.log(ideaBox);
-// }
-
-// stringify this new idea and set it to localStorage
-
-// store new ideas into array available everywhere and set into localStorage
-// push each new item into array
-
-// $('.card').on('click', '.card-delete', function() {
-//   $('.card').remove();
-// });
 
 
 
