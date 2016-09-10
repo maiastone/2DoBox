@@ -1,39 +1,23 @@
 
-// array of new ideas//
-// var array = JSON.parse(stringIdea);
+var ideaBox;
 
-// var ideaBox = JSON.parse(localStorage.ideas) || []
+$('document').ready(function(){
+  populateDomFromLocalStorage();
+});
 
-// window.onload =
-//
-// function loadElementsOnPage() {
-//
-// }
-
-
-var ideaBox = [];
-
+//why do we need this code?????? project breaks without it. needs to be a part of the populate function
 if(localStorage.getItem('ideas')) {
-  ideaBox = JSON.parse(localStorage.getItem('ideas'))
+  ideaBox = JSON.parse(localStorage.getItem('ideas'));
 } else {
   ideaBox = [];
 }
 
-function addNewCard(title, body, id) {
-  $('.card').prepend(`
-    <li id=${id}>
-      <header>
-        <h3 class="card-title">${title}</h3>
-        <button class="card-delete">delete</button>
-      </header>
-      <p class="card-body">${body}</p>
-      <footer>
-        <button class="up-vote">up</button>
-        <button class="down-vote">down</button>
-        <p class="quality">Quality</p>
-      </footer></li>`
-    );
-}
+$('ul').on('click', '.card-delete', function () {
+  ideaBox = removeIdea(this.closest('li').id)
+  this.closest('li').remove();
+  stringIdeas = JSON.stringify(ideaBox);
+  localStorage.setItem('ideas', stringIdeas);
+})
 
 $('#save').on('click', function() {
   var $titleInput = $('#title').val();
@@ -41,6 +25,13 @@ $('#save').on('click', function() {
   buildAndRenderIdea($titleInput, $bodyInput);
   clearIdeaInput();
 });
+
+function populateDomFromLocalStorage () {
+  var ideas = JSON.parse(localStorage.getItem('ideas'));
+  ideas.forEach(function(idea){
+    addNewCard(idea.title, idea.body, idea.id);
+  });
+}
 
 function Idea (title, body) {
     this.id = Date.now();
@@ -59,7 +50,7 @@ function buildAndRenderIdea(title, body) {
 
 // each new idea is a stringified object
 function addEntry (idea) {
-  ideaBox.push(idea);
+   ideaBox.push(idea);
 }
 
 function clearIdeaInput() {
@@ -67,71 +58,66 @@ function clearIdeaInput() {
   $('#body').val('');
 }
 
-$('ul').on('click', '.card-delete', function () {
-  ideaBox = removeIdea(this.closest('li').id)
-  this.closest('li').remove();
-  stringIdeas = JSON.stringify(ideaBox);
-  localStorage.setItem('ideas', stringIdeas);
-})
-
 function removeIdea (id) {
   return ideaBox.filter(function(idea){
     return parseInt(id) !== idea.id
   })
 }
 
-// function findThisIdea (id) {
-//   ideaBox.forEach(function(idea) {
-//     if (idea.id === parse(id)) {
-//     return idea;
-//     }
-//   });
-// };
-
-// window.onload = function keepContent () {
-//  var storedIdeas = JSON.parse.localStorage;
-//   $('.card').prepend(storedIdeas);
-// }
-
-// window.onload = function keepContent () {
-//   //  console.log();
-//   var parseIdeas = JSON.parse(localStorage.getItem(ideaBox));
-//   console.log(ideaBox);
-// }
-
-
-
-// stringify this new idea and set it to localStorage
-
-// store new ideas into array available everywhere and set into localStorage
-// push each new item into array
-
-// $('.card').on('click', '.card-delete', function() {
-//   $('.card').remove();
-// });
-
-
-
-// function searchIdeas() {
-//   var $searchValue = $('#search').val();
-//   if ($inputTitle.val() || $inputBody.val() === $searchValue.val()) {
-//     ideas.document.style.visibility = visible;
-//   } else {
-//     ideas.document.style.visibility = hidden;
-//   }
-// }
-
-$('ul').on('click', '.card-delete', function () {
-  ideaBox = removeIdea(this.closest('li').id)
-  debugger
-  this.closest('li').remove();
-  // ideaBox.splice(this.closest('li'),1);
-  stringIdeas = JSON.stringify(ideaBox);
-  localStorage.setItem('ideas', stringIdeas);
-})
-
-function removeIdea (id) {
-  return ideaBox.filter(function(idea){
-    return parseInt(id) !== idea.id
-  })
+function addNewCard(title, body, id) {
+  $('.card').prepend(`
+    <li id=${id}>
+      <header id="card-header">
+        <h2 class="card-title" contenteditable="true" onkeyup="">${title}</h2>
+        <button class="card-delete">delete</button>
+      </header>
+      <p class="card-body" contenteditable="true" onkeyup="addEntry">${body}</p>
+      <footer id="card-footer">
+        <button class="up-vote">up</button>
+        <button class="down-vote">down</button>
+        <p class="quality">quality: </p>
+      </footer></li>`
+    );
 }
+
+
+
+$(document).ready(function(){
+    $('#search').keyup(function(){
+        var filter = $(this).val(), count = 0;
+        $('.card li').each(function(){
+
+            if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+              debugger
+                $(this).hide();
+            } else {
+                $(this).show();
+                count++;
+            }
+        });
+    });
+});
+
+
+//Maia working on voting system
+function vote() {
+
+  var i=0;
+  var qualities = ['swill', 'plausible', 'genius'];
+
+
+
+
+  $.each(qualities, function(index, value){
+    console.log(value);
+    return (value !== 'genius');
+  });
+
+  $('.up-vote').on('click', function () {
+      i = (i + 1) % qualities.length;
+      console.log(value);
+
+      // $('.quality').replaceAll(value);
+  });
+}
+vote();
