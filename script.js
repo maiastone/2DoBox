@@ -17,6 +17,7 @@ if(localStorage.getItem('ideas')) {
   ideaBox = [];
 }
 
+
 $('#save').on('click', function() {
   var $titleInput = $('#title').val();
   var $bodyInput = $('#body').val();
@@ -31,7 +32,6 @@ $('ul').on('click', '.card-delete', function () {
   localStorage.setItem('ideas', stringIdeas);
 });
 
-
 function Idea (title, body) {
     this.id = Date.now();
     this.title = title;
@@ -39,14 +39,16 @@ function Idea (title, body) {
     this.quality = 'swill';
 }
 
+
+
 function addNewCard(title, body, id) {
   $('.card').prepend(`
     <li id=${id}>
       <header id="card-header">
-        <h2 class="card-title" contenteditable="true" onkeyup="">${title}</h2>
+        <h2 class="card-title" contenteditable="true" onkeyup="editIdea">${title}</h2>
         <button class="card-delete">delete</button>
       </header>
-      <p class="card-body" contenteditable="true" onkeyup="addEntry">${body}</p>
+      <p class="card-body" contenteditable="true" onkeyup="editIdea">${body}</p>
       <footer id="card-footer">
         <button class="up-vote">up</button>
         <button class="down-vote">down</button>
@@ -73,42 +75,36 @@ function clearIdeaInput() {
   $('#body').val('');
 }
 
+
+
 function removeIdea (id) {
   return ideaBox.filter(function(idea) {
   return parseInt(id) !== idea.id;
   });
 }
 
-
-
-// var i=0;
-// var qualities = ['swill', 'plausible', 'genius'];
-//
-// $.each(qualities, function(index, value){
-//   console.log(value);
-//   return (value !== 'genius');
-// });
-
-// $('.up-vote').on('click', function () {
-//
-
-// on click of upvote, loop through the array and increase the value by 1.  var current = document.querySelector("#currentnote");
-
-function vote() {
-
-  var i=0;
-  var qualities = ['swill', 'plausible', 'genius'];
-
-  $.each(qualities, function(index, value){
-    console.log(value);
-    return (value !== 'genius');
-  });
-
-  $('.up-vote').on('click', function () {
-      i = (i + 1) % qualities.length;
-      console.log(value);
-
-      // $('.quality').replaceAll(value);
-  });
+function editIdea (title, body) {
+  // update object with new Idea & set to localStorage
+  this.title = title;
+  this.body = body;
 }
-vote();
+
+//
+$(function(id) {
+  var editable = $('.card-title');
+  $(editable).blur(function (id) {
+    findID(id);
+    var currentIdea = findID(id);
+    currentIdea.title = title;
+});
+  // debugger;
+  if(localStorage.getItem(ideaBox)) {
+    editable.innerHTML = localStorage.getItem(ideaBox);
+}
+});
+
+function findID(id) {
+  return ideaBox.filter(function(idea) {
+  return parseInt(id) === idea.id;
+});
+}
