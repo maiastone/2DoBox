@@ -75,12 +75,10 @@ function addNewCard(title, body, id) {
       <footer id="card-footer">
         <button class="up-vote">up</button>
         <button class="down-vote">down</button>
-        <p class="quality">quality: </p>
+         <p class="quality-level">Quality: <span class="idea-quality-level">${'Swill'}</span></p>
       </footer></li>`
     );
 }
-
-
 
 $(document).ready(function(){
     $('#search').keyup(function(){
@@ -99,25 +97,54 @@ $(document).ready(function(){
 });
 
 
-//Maia working on voting system
-function vote() {
+$('ul').on('click', '.up-vote', function () {
+  ideaBox = upVoteIdea(this.closest('.quality-inner-text').id)
+  this.closest('.quality-inner-text').val();
+  stringIdeas = JSON.stringify(ideaBox);
+  localStorage.setItem('ideas', stringIdeas);
+})
 
-  var i=0;
-  var qualities = ['swill', 'plausible', 'genius'];
 
-
-
-
-  $.each(qualities, function(index, value){
-    console.log(value);
-    return (value !== 'genius');
-  });
-
-  $('.up-vote').on('click', function () {
-      i = (i + 1) % qualities.length;
-      console.log(value);
-
-      // $('.quality').replaceAll(value);
-  });
+function upVoteIdea (id) {
+  return ideaBox.filter(function(idea){
+    return parseInt(id) === idea.id
+  })
 }
-vote();
+
+idea.prototype.levelUp = function () {
+  this.level++;
+  ideaBox.store();
+};
+
+idea.prototype.levelDown = function () {
+  if (this.level > 1) {
+    this.level--;
+    ideaBox.store();
+  }
+};
+
+// function levelUpPlausible () {
+//   if ('.quality-inner-text' === )
+// }
+
+
+//
+//
+// $(function(id) {
+//   var editable = $('.card-title');
+//   $(editable).blur(function (id) {
+//     findID(id);
+//     var currentIdea = findID(id);
+//     currentIdea.title = title;
+// });
+//
+//   if(localStorage.getItem(ideaBox)) {
+//     editable.innerHTML = localStorage.getItem(ideaBox);
+// }
+// });
+//
+// function findID(id) {
+//   return ideaBox.filter(function(idea) {
+//   return parseInt(id) === idea.id;
+// });
+// }
