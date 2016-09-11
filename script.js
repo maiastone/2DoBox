@@ -1,5 +1,8 @@
 
 var ideaBox;
+var newIdeaQuality = this.quality
+
+
 
 $('document').ready(function(){
   populateDomFromLocalStorage();
@@ -43,7 +46,7 @@ function Idea (title, body) {
     this.id = Date.now();
     this.title = title;
     this.body = body;
-    this.quality = 'Swill';
+    this.quality = ('swill');
 }
 
 function buildAndRenderIdea(title, body) {
@@ -100,24 +103,26 @@ $('ul').on('click', '.up-vote', function () {
 
   if (this.id === this.id && quality === 'swill') {
     return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('plausible');
-    // idea.quality = 'plausible';
-  } else if (this.id === this.id && quality === 'plausible') {
-    return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('genius');
-    // idea.quality = 'genius';
+        newIdeaQuality = this.quality;
+      } else if (this.id === this.id && quality === 'plausible') {
+          return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('genius');
+          newIdeaQuality = this.quality;
   }
 });
-
-$('ul').on('click', '.down-vote', function () {
-  var id = parseInt($(this).parent().parent().attr('id'));
-  var quality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
-
-  if (this.id === this.id && quality === 'genius') {
-    return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('plausible');
-    // idea.quality = 'plausible';
-  } else if (this.id === this.id && quality === 'plausible') {
-    return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('swill');
-    // idea.quality = 'swill';
-  }
-});
+//
+// $('ul').on('click', '.down-vote', function () {
+//   var id = parseInt($(this).parent().parent().attr('id'));
+//   var quality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
+//
+//   if (this.id === this.id && quality === 'genius') {
+//     return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('plausible');
+//     this.quality('.idea-quality-level') = 'plausible';
+//
+//       } else if (this.id === this.id && quality === 'plausible') {
+//           return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('swill');
+//     // this.quality('.idea-quality-level') = 'swill';
+//
+//   }
+// });
 
 //store to local, clear the page, render again with new stuff
