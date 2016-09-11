@@ -1,14 +1,11 @@
 
-var ideaBox = [];
-
-
 $('document').ready(function(){
   populateDomFromLocalStorage();
 });
 
 //why do we need this code?????? project breaks without it. needs to be a part of the populate function
-if (localStorage.getItem('ideas')) {
-  ideaBox = JSON.parse(localStorage.getItem('ideas'));
+if (localStorage.getItem('ideaBox')) {
+  ideaBox = JSON.parse(localStorage.getItem('ideaBox'));
 } else {
   ideaBox = [];
 }
@@ -17,8 +14,9 @@ if (localStorage.getItem('ideas')) {
 $('ul').on('click', '.card-delete', function () {
   ideaBox = removeIdea(this.closest('li').id);
   this.closest('li').remove();
-  stringIdeas = JSON.stringify(ideaBox);
-  localStorage.setItem('ideas', stringIdeas);
+  storeIdeasPlease();
+  // stringIdeas = JSON.stringify(ideaBox);
+  // localStorage.setItem('ideas', stringIdeas);
 });
 
 
@@ -48,7 +46,7 @@ $('#save').on('click', function() {
 
 
 function populateDomFromLocalStorage () {
-  var ideas = JSON.parse(localStorage.getItem('ideas'));
+  var ideas = JSON.parse(localStorage.getItem('ideaBox'));
   ideas.forEach(function(idea){
     addNewCard(idea.title, idea.body, idea.id);
   });
@@ -60,8 +58,9 @@ function buildAndRenderIdea(title, body) {
   var idea = new Idea(title, body);
   addNewCard(idea.title, idea.body, idea.id);
   addEntry(idea);
-  var stringIdeas = JSON.stringify(ideaBox);
-  localStorage.setItem('ideas', stringIdeas);
+  storeIdeasPlease();
+  // var stringIdeas = JSON.stringify(ideaBox);
+  // localStorage.setItem('ideas', stringIdeas);
 }
 
 
@@ -159,9 +158,12 @@ editTitle(thisID, newTitle);
 
 });
 
-function findIdeaById(id) {
-  var thisID = parseInt($(this).parents('li').prop('id'));
+function findIdeaById(thisID) {
+  return this.ideaBox.find(function(idea){
+    return idea.id === thisID;
+  });
 }
+
 //   search ideabox array for an idea by the id
 //   return the idea that matches this ID
 //   don't forget to parseInt the ID
@@ -170,9 +172,9 @@ function findIdeaById(id) {
 // ideaBox.find(thisID).editTitle(newTitle);
 
 function editTitle (thisID, newTitle) {
-  var idea = findIdeaById(id); //TODO: write this function
+  var idea = findIdeaById(thisID);
   idea.title = newTitle;
-  storeIdeasPlease(); //TODO: write this function
+  storeIdeasPlease();
 }
 
 function editBody (body) {
