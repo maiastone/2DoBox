@@ -32,11 +32,11 @@ $('ul').on('click', '.card-delete', function () {
   localStorage.setItem('ideas', stringIdeas);
 });
 
-function Idea (title, body) {
-    this.id = Date.now();
+function Idea (title, body, id, quality) {
     this.title = title;
     this.body = body;
-    this.quality = 'swill';
+    this.id = id || Date.now();
+    this.quality = quality || 'swill';
 }
 
 
@@ -75,26 +75,47 @@ function clearIdeaInput() {
   $('#body').val('');
 }
 
-
-
 function removeIdea (id) {
   return ideaBox.filter(function(idea) {
   return parseInt(id) !== idea.id;
   });
 }
 
-function editIdea (title, body) {
-  // update object with new Idea & set to localStorage
-  this.title = title;
-  this.body = body;
-}
 
+// needs to store also
 
+// function storeIdea () {
+//
+// localStorage.setItemideasstringify
+//
+// }
 
-$('card-title').blur(function () {
+$('.ideas').on('blur','.card-title', function () {
+var thisID = parseInt($(this).parents('li').prop('id'));
+var newTitle = $(this).text();
+
+// function editTitle(thisID, newTitle);
 
 });
 
-function saveEdits() {
+//function findIdeaById(id) {
+  //search ideabox array for an idea by the id
+  //return the idea that matches this ID
+  //don't forget to parseInt the ID
+// }
 
+// ideaBox.find(thisID).editTitle(newTitle);
+
+function editTitle (thisID, newTitle) {
+  var idea = findIdeaById(id); //TODO: write this function
+  idea.title = newTitle;
+  storeIdeasPlease(); //TODO: write this function
+}
+
+function editBody (body) {
+  this.body = body;
+}
+
+function storeIdeasPlease () {
+  localStorage.setItem('ideas', ideaBox);
 }
