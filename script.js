@@ -64,8 +64,6 @@ function clearIdeaInput() {
   $('#body').val('');
 }
 
-
-
 function addNewCard(title, body, id) {
   $('.card').prepend(`
     <li id=${id}>
@@ -77,7 +75,7 @@ function addNewCard(title, body, id) {
       <footer id="card-footer">
         <button class="up-vote">up</button>
         <button class="down-vote">down</button>
-         <p class="quality-level">Quality: <span class="idea-quality-level">${'Swill'}</span></p>
+         <p class="quality-level">Quality: <span class="idea-quality-level">${'swill'}</span></p>
       </footer></li>`
     );
 }
@@ -97,30 +95,29 @@ $(document).ready(function(){
 });
 
 $('ul').on('click', '.up-vote', function () {
-
   var id = parseInt($(this).parent().parent().attr('id'));
-  // var ideaId = findIdea(id);
   var quality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
-  // var idea = findIdea(id);
 
-  // if (quality = 'Swill');
-  // alert('hello');
-
-
-  if (this.id === this.id && quality === 'Swill') {
+  if (this.id === this.id && quality === 'swill') {
     return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('plausible');
-    idea.quality = 'plausible';
+    // idea.quality = 'plausible';
   } else if (this.id === this.id && quality === 'plausible') {
     return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('genius');
-    idea.quality = 'genius';
+    // idea.quality = 'genius';
   }
-  // stringIdeas = JSON.stringify(ideaBox);
-  // localStorage.setItem('ideas', stringIdeas);
 });
-///SAVE ON RELOAD
 
-// function findIdea (id) {
-//   return ideaBox.filter(function(idea) {
-//     return parseInt(id) === idea.id
-//   })
-// }
+$('ul').on('click', '.down-vote', function () {
+  var id = parseInt($(this).parent().parent().attr('id'));
+  var quality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
+
+  if (this.id === this.id && quality === 'genius') {
+    return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('plausible');
+    // idea.quality = 'plausible';
+  } else if (this.id === this.id && quality === 'plausible') {
+    return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('swill');
+    // idea.quality = 'swill';
+  }
+});
+
+//store to local, clear the page, render again with new stuff
