@@ -1,7 +1,5 @@
 
 var ideaBox;
-var newIdeaQuality = this.quality
-
 
 
 $('document').ready(function(){
@@ -46,7 +44,7 @@ function Idea (title, body) {
     this.id = Date.now();
     this.title = title;
     this.body = body;
-    this.quality = ('swill');
+    this.quality = document.querySelector('.idea-quality-level').innerText;
 }
 
 function buildAndRenderIdea(title, body) {
@@ -56,6 +54,8 @@ function buildAndRenderIdea(title, body) {
   var stringIdeas = JSON.stringify(ideaBox);
   localStorage.setItem('ideas', stringIdeas);
 }
+
+
 
 // each new idea is a stringified object
 function addEntry (idea) {
@@ -103,10 +103,10 @@ $('ul').on('click', '.up-vote', function () {
 
   if (this.id === this.id && quality === 'swill') {
     return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('plausible');
-        newIdeaQuality = this.quality;
+        // this.quality = 'plausible';
       } else if (this.id === this.id && quality === 'plausible') {
           return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('genius');
-          newIdeaQuality = this.quality;
+            // this.quality = 'genius';
   }
 });
 //
