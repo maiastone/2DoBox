@@ -40,8 +40,8 @@ function populateDomFromLocalStorage () {
   });
 }
 
-function Idea (title, body, quality) {
-    this.id = Date.now();
+function Idea (id, title, body, quality) {
+    this.id = id || Date.now();
     this.title = title;
     this.body = body;
     this.quality = quality || 'swill';
