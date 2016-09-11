@@ -32,11 +32,11 @@ $('ul').on('click', '.card-delete', function () {
   localStorage.setItem('ideas', stringIdeas);
 });
 
-function Idea (title, body) {
-    this.id = Date.now();
+function Idea (title, body, id, quality) {
     this.title = title;
     this.body = body;
-    this.quality = 'swill';
+    this.id = id || Date.now();
+    this.quality = quality || 'swill';
 }
 
 
@@ -45,14 +45,14 @@ function addNewCard(title, body, id) {
   $('.card').prepend(`
     <li id=${id}>
       <header id="card-header">
-        <h2 class="card-title" contenteditable="true" onkeyup="editIdea">${title}</h2>
-        <button class="card-delete">delete</button>
+        <h2 class="card-title" contenteditable="true">${title}</h2>
+        <button class="card-delete"></button>
       </header>
-      <p class="card-body" contenteditable="true" onkeyup="editIdea">${body}</p>
+      <p class="card-body" contenteditable="true">${body}</p>
       <footer id="card-footer">
-        <button class="up-vote">up</button>
-        <button class="down-vote">down</button>
-        <p class="quality">quality: </p>
+        <button class="up-vote"></button>
+        <button class="down-vote"></button>
+        <p class="quality-level">quality: <span class="idea-quality-level">${'swill'}</span></p>
       </footer></li>`
     );
 }
@@ -75,36 +75,47 @@ function clearIdeaInput() {
   $('#body').val('');
 }
 
-
-
 function removeIdea (id) {
   return ideaBox.filter(function(idea) {
   return parseInt(id) !== idea.id;
   });
 }
 
-function editIdea (title, body) {
-  // update object with new Idea & set to localStorage
-  this.title = title;
+
+// needs to store also
+
+// function storeIdea () {
+//
+// localStorage.setItemideasstringify
+//
+// }
+
+$('.ideas').on('blur','.card-title', function () {
+var thisID = parseInt($(this).parents('li').prop('id'));
+var newTitle = $(this).text();
+
+// function editTitle(thisID, newTitle);
+
+});
+
+//function findIdeaById(id) {
+  //search ideabox array for an idea by the id
+  //return the idea that matches this ID
+  //don't forget to parseInt the ID
+// }
+
+// ideaBox.find(thisID).editTitle(newTitle);
+
+function editTitle (thisID, newTitle) {
+  var idea = findIdeaById(id); //TODO: write this function
+  idea.title = newTitle;
+  storeIdeasPlease(); //TODO: write this function
+}
+
+function editBody (body) {
   this.body = body;
 }
 
-//
-$(function(id) {
-  var editable = $('.card-title');
-  $(editable).blur(function (id) {
-    findID(id);
-    var currentIdea = findID(id);
-    currentIdea.title = title;
-});
-  // debugger;
-  if(localStorage.getItem(ideaBox)) {
-    editable.innerHTML = localStorage.getItem(ideaBox);
-}
-});
-
-function findID(id) {
-  return ideaBox.filter(function(idea) {
-  return parseInt(id) === idea.id;
-});
+function storeIdeasPlease () {
+  localStorage.setItem('ideas', ideaBox);
 }
