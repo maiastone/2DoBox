@@ -1,5 +1,5 @@
 
-var ideaBox;
+var ideaBox = [];
 
 
 $('document').ready(function(){
@@ -7,7 +7,7 @@ $('document').ready(function(){
 });
 
 //why do we need this code?????? project breaks without it. needs to be a part of the populate function
-if(localStorage.getItem('ideas')) {
+if (localStorage.getItem('ideas')) {
   ideaBox = JSON.parse(localStorage.getItem('ideas'));
 } else {
   ideaBox = [];
@@ -40,11 +40,11 @@ function populateDomFromLocalStorage () {
   });
 }
 
-function Idea (title, body) {
+function Idea (title, body, quality) {
     this.id = Date.now();
     this.title = title;
     this.body = body;
-    this.quality = document.querySelector('.idea-quality-level').innerText;
+    this.quality = quality || 'swill';
 }
 
 function buildAndRenderIdea(title, body) {
@@ -103,26 +103,31 @@ $('ul').on('click', '.up-vote', function () {
 
   if (this.id === this.id && quality === 'swill') {
     return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('plausible');
-        // this.quality = 'plausible';
       } else if (this.id === this.id && quality === 'plausible') {
           return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('genius');
-            // this.quality = 'genius';
   }
+
+    storeIdeasPlease ();
+    populateDomFromLocalStorage ();
 });
-//
-// $('ul').on('click', '.down-vote', function () {
-//   var id = parseInt($(this).parent().parent().attr('id'));
-//   var quality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
-//
-//   if (this.id === this.id && quality === 'genius') {
-//     return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('plausible');
-//     this.quality('.idea-quality-level') = 'plausible';
-//
-//       } else if (this.id === this.id && quality === 'plausible') {
-//           return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('swill');
-//     // this.quality('.idea-quality-level') = 'swill';
-//
-//   }
-// });
+
+
+$('ul').on('click', '.down-vote', function () {
+  var id = parseInt($(this).parent().parent().attr('id'));
+  var quality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
+
+  if (this.id === this.id && quality === 'genius') {
+    return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('plausible');
+      } else if (this.id === this.id && quality === 'plausible') {
+          return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('swill');
+  }
+      storeIdeasPlease ();
+      populateDomFromLocalStorage ();
+});
+
+
+function storeIdeasPlease () {
+  localStorage.setItem('ideas', ideaBox);
+}
 
 //store to local, clear the page, render again with new stuff
