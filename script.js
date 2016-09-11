@@ -54,13 +54,6 @@ function populateDomFromLocalStorage () {
   });
 }
 
-function Idea (id, title, body, quality) {
-    this.id = id || Date.now();
-    this.title = title;
-    this.body = body;
-    this.quality = quality || 'swill';
-
-}
 
 
 function buildAndRenderIdea(title, body) {
@@ -90,12 +83,12 @@ function addNewCard(title, body, id) {
     <li id=${id}>
       <header id="card-header">
         <h2 class="card-title" contenteditable="true" onkeyup="">${title}</h2>
-        <button class="card-delete">delete</button>
+        <button class="card-delete"></button>
       </header>
       <p class="card-body" contenteditable="true" onkeyup="addEntry">${body}</p>
       <footer id="card-footer">
-        <button class="up-vote">up</button>
-        <button class="down-vote">down</button>
+        <button class="up-vote"></button>
+        <button class="down-vote"></button>
          <p class="quality-level">Quality: <span class="idea-quality-level">${'swill'}</span></p>
       </footer></li>`
     );
@@ -145,7 +138,7 @@ $('ul').on('click', '.down-vote', function () {
 
 
 function storeIdeasPlease () {
-  localStorage.setItem('ideas', ideaBox);
+  localStorage.setItem("ideaBox", JSON.stringify(ideaBox));
 }
 
 //store to local, clear the page, render again with new stuff
@@ -162,15 +155,16 @@ function storeIdeasPlease () {
 $('.ideas').on('blur','.card-title', function () {
 var thisID = parseInt($(this).parents('li').prop('id'));
 var newTitle = $(this).text();
-
-// function editTitle(thisID, newTitle);
+editTitle(thisID, newTitle);
 
 });
 
-//function findIdeaById(id) {
-  //search ideabox array for an idea by the id
-  //return the idea that matches this ID
-  //don't forget to parseInt the ID
+function findIdeaById(id) {
+  var thisID = parseInt($(this).parents('li').prop('id'));
+}
+//   search ideabox array for an idea by the id
+//   return the idea that matches this ID
+//   don't forget to parseInt the ID
 // }
 
 // ideaBox.find(thisID).editTitle(newTitle);
