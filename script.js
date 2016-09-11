@@ -13,18 +13,20 @@ if (localStorage.getItem('ideas')) {
   ideaBox = [];
 }
 
+
 $('ul').on('click', '.card-delete', function () {
-  ideaBox = removeIdea(this.closest('li').id)
+  ideaBox = removeIdea(this.closest('li').id);
   this.closest('li').remove();
   stringIdeas = JSON.stringify(ideaBox);
   localStorage.setItem('ideas', stringIdeas);
-})
+});
 
 function removeIdea (id) {
   return ideaBox.filter(function(idea){
-    return parseInt(id) !== idea.id
-  })
+    return parseInt(id) !== idea.id;
+  });
 }
+
 
 $('#save').on('click', function() {
   var $titleInput = $('#title').val();
@@ -32,6 +34,7 @@ $('#save').on('click', function() {
   buildAndRenderIdea($titleInput, $bodyInput);
   clearIdeaInput();
 });
+
 
 function populateDomFromLocalStorage () {
   var ideas = JSON.parse(localStorage.getItem('ideas'));
@@ -46,6 +49,7 @@ function Idea (id, title, body, quality) {
     this.body = body;
     this.quality = quality || 'swill';
 }
+
 
 function buildAndRenderIdea(title, body) {
   var idea = new Idea(title, body);
@@ -66,6 +70,7 @@ function clearIdeaInput() {
   $('#title').val('');
   $('#body').val('');
 }
+
 
 function addNewCard(title, body, id) {
   $('.card').prepend(`
@@ -131,3 +136,37 @@ function storeIdeasPlease () {
 }
 
 //store to local, clear the page, render again with new stuff
+
+
+
+function removeIdea (id) {
+  return ideaBox.filter(function(idea) {
+  return parseInt(id) !== idea.id;
+  });
+}
+
+function editIdea (title, body) {
+  // update object with new Idea & set to localStorage
+  this.title = title;
+  this.body = body;
+}
+
+//
+$(function(id) {
+  var editable = $('.card-title');
+  $(editable).blur(function (id) {
+    findID(id);
+    var currentIdea = findID(id);
+    currentIdea.title = title;
+});
+  // debugger;
+  if(localStorage.getItem(ideaBox)) {
+    editable.innerHTML = localStorage.getItem(ideaBox);
+}
+});
+
+function findID(id) {
+  return ideaBox.filter(function(idea) {
+  return parseInt(id) === idea.id;
+});
+}
