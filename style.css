@@ -1,3 +1,7 @@
+@media screen and  {
+
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
 }
@@ -21,8 +25,9 @@ p {
 }
 
 li {
-  border-bottom: 1px solid #d1d3d4;
+  border-bottom: 2px solid #d1d3d4;
   padding: 2px 0 2px 5px;
+  margin: 0px 20px 0px 20px;
 }
 
 .input {
@@ -30,27 +35,80 @@ li {
   background-color: #e5f3f2;
 }
 
-.card {
-  width: 225px;
-}
 
 .card-body {
   padding: 10px 0;
+  line-height: 1.2em;
+  font-stretch: expanded;
 }
 
 .quality {
   color: #6d6e71;
   font-size: 10px;
+}
 
+
+.card-delete {
+  height: 20px;
+  width: 20px;
+  background-image:url('images/delete.svg');
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+  border: none;
+  background-size: 20px 20px;
+  background-position: center;
+}
+.card-delete:hover {
+  background-image:url('images/delete-hover.svg');
+}
+
+.up-vote {
+  height: 20px;
+  width: 20px;
+  background-image:url('images/upvote.svg');
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+  border: none;
+  background-size: 20px 20px;
+  background-position: center;
+  margin: 3px;
+}
+
+.up-vote:hover {
+  background-image:url('images/upvote-hover.svg');
+}
+
+.down-vote {
+  height: 20px;
+  width: 20px;
+  background-image:url('images/downvote.svg');
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+  border: none;
+  background-size: 20px 20px;
+  background-position: center;
+  margin: 3px;
+}
+
+.down-vote:hover {
+  background-image:url('images/downvote-hover.svg');
+}
+
+.quality-level {
+  color: #6d6e71;
+  font-size: 12px;
+  margin: 8px 0px 0px 8px;
 }
 
 #card-header {
   display: flex;
   justify-content: space-between;
+  margin-top: 15px;
 }
 
 #card-footer {
   display: flex;
+  margin-bottom: 5px;
 
 }
 
@@ -67,7 +125,7 @@ li {
   color: #ffffff;
   outline: 0px;
   padding: 0px;
-  height: 30`px;
+  height: 30px;
   width: 256px;
   border: none;
   font-size: 1.1em;

@@ -45,14 +45,14 @@ function addNewCard(title, body, id) {
   $('.card').prepend(`
     <li id=${id}>
       <header id="card-header">
-        <h2 class="card-title" contenteditable="true" onkeyup="editIdea">${title}</h2>
-        <button class="card-delete">delete</button>
+        <h2 class="card-title" contenteditable="true">${title}</h2>
+        <button class="card-delete"></button>
       </header>
-      <p class="card-body" contenteditable="true" onkeyup="editIdea">${body}</p>
+      <p class="card-body" contenteditable="true">${body}</p>
       <footer id="card-footer">
-        <button class="up-vote">up</button>
-        <button class="down-vote">down</button>
-        <p class="quality">quality: </p>
+        <button class="up-vote"></button>
+        <button class="down-vote"></button>
+        <p class="quality-level">quality: <span class="idea-quality-level">${'swill'}</span></p>
       </footer></li>`
     );
 }
@@ -89,22 +89,12 @@ function editIdea (title, body) {
   this.body = body;
 }
 
-//
-$(function(id) {
-  var editable = $('.card-title');
-  $(editable).blur(function (id) {
-    findID(id);
-    var currentIdea = findID(id);
-    currentIdea.title = title;
-});
-  // debugger;
-  if(localStorage.getItem(ideaBox)) {
-    editable.innerHTML = localStorage.getItem(ideaBox);
-}
+
+
+$('card-title').blur(function () {
+
 });
 
-function findID(id) {
-  return ideaBox.filter(function(idea) {
-  return parseInt(id) === idea.id;
-});
+function saveEdits() {
+
 }
