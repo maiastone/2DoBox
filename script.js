@@ -52,9 +52,9 @@ function populateDomFromLocalStorage () {
 
 
 
-function buildAndRenderIdea(title, body) {
+function buildAndRenderIdea(title, body, id, quality) {
   var idea = new Idea(title, body);
-  addNewCard(idea.title, idea.body, idea.id);
+  addNewCard(idea.title, idea.body, idea.id, idea.quality);
   addEntry(idea);
   storeIdeasPlease();
 
@@ -107,33 +107,14 @@ $('ul').on('click', '.up-vote', function () {
   var quality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
 
   if (this.id === this.id && quality === 'swill') {
-    newQuality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
-    return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('plausible');
+   var newQuality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('plausible');
+    editQuality(id, newQuality.text());
+    return newQuality;
       } else if (this.id === this.id && quality === 'plausible') {
-        newQuality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('genius');
+        var newQuality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('genius');
+        editQuality(id, newQuality.text());
           return newQuality;
   }
-
-  editQuality(id, newQuality.text());
-
-});
-
-
-$('ul').on('click', '.down-vote', function () {
-  var id = parseInt($(this).parent().parent().attr('id'));
-  var quality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
-
-  if (this.id === this.id && quality === 'genius') {
-    newQuality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
-    return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('plausible');
-      } else if (this.id === this.id && quality === 'plausible') {
-        newQuality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('swill');
-        debugger;
-          return newQuality;
-  }
-
-  editQuality(id, newQuality.text());
-
 });
 
 function editQuality (thisID, newQuality) {
@@ -143,8 +124,43 @@ function editQuality (thisID, newQuality) {
 }
 
 
+$('ul').on('click', '.down-vote', function () {
+  var id = parseInt($(this).parent().parent().attr('id'));
+  var quality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
+
+  if (this.id === this.id && quality === 'genius') {
+   var newQuality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('plausible');
+    editQuality(id, newQuality.text());
+    return newQuality;
+      } else if (this.id === this.id && quality === 'plausible') {
+        var newQuality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('swill');
+        editQuality(id, newQuality.text());
+          return newQuality;
+  }
+});
+
+// $('ul').on('click', '.down-vote', function () {
+//   var id = parseInt($(this).parent().parent().attr('id'));
+//   var quality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
+//
+//   if (this.id === this.id && quality === 'genius') {
+//     newQuality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
+//     return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('plausible');
+//       } else if (this.id === this.id && quality === 'plausible') {
+//         newQuality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('swill');
+//         debugger;
+//           return newQuality;
+//   }
+//
+//   editQuality(id, newQuality.text());
+//
+// });
+
+
+
+
 function storeIdeasPlease () {
-  localStorage.setItem("ideaBox", JSON.stringify(ideaBox));
+  localStorage.setItem('ideaBox', JSON.stringify(ideaBox));
 }
 
 //store to local, clear the page, render again with new stuff
