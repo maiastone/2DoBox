@@ -180,11 +180,23 @@ function storeIdeasPlease () {
 $('.ideas').on('blur','.card-title', function () {
 var thisID = parseInt($(this).parents('li').prop('id'));
 var newTitle = $(this).text();
-var newBody = $(this).text();
 editTitle(thisID, newTitle);
-editBody(thisID, newBody);
-
 });
+
+$('.ideas').on('blur','.card-body', function () {
+var thisID = parseInt($(this).parents('li').prop('id'));
+var newBody = $(this).text();
+editBody(thisID, newBody);
+});
+
+function editBody (thisID, newBody) {
+  var idea = findIdeaById(thisID);
+  idea.body = newBody;
+  storeIdeasPlease();
+}
+
+
+
 
 function findIdeaById(thisID) {
   return this.ideaBox.find(function(idea){
@@ -205,11 +217,7 @@ function editTitle (thisID, newTitle) {
   storeIdeasPlease();
 }
 
-function editBody (thisID, newBody) {
-  var idea = findIdeaById(thisID);
-  idea.body = newBody;
-  storeIdeasPlease();
-}
+
 
 
 
