@@ -180,7 +180,9 @@ function storeIdeasPlease () {
 $('.ideas').on('blur','.card-title', function () {
 var thisID = parseInt($(this).parents('li').prop('id'));
 var newTitle = $(this).text();
+var newBody = $(this).text();
 editTitle(thisID, newTitle);
+editBody(thisID, newBody);
 
 });
 
@@ -203,9 +205,13 @@ function editTitle (thisID, newTitle) {
   storeIdeasPlease();
 }
 
-function editBody (body) {
-  this.body = body;
+function editBody (thisID, newBody) {
+  var idea = findIdeaById(thisID);
+  idea.body = newBody;
+  storeIdeasPlease();
 }
+
+
 
 //TODO: get edit body working
 //TODO: get down-vote working
