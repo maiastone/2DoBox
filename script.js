@@ -123,6 +123,22 @@ function editQuality (thisID, newQuality) {
   storeIdeasPlease();
 }
 
+
+$('ul').on('click', '.down-vote', function () {
+  var id = parseInt($(this).parent().parent().attr('id'));
+  var quality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
+
+  if (this.id === this.id && quality === 'genius') {
+   var newQuality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('plausible');
+    editQuality(id, newQuality.text());
+    return newQuality;
+      } else if (this.id === this.id && quality === 'plausible') {
+        var newQuality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('swill');
+        editQuality(id, newQuality.text());
+          return newQuality;
+  }
+});
+
 // $('ul').on('click', '.down-vote', function () {
 //   var id = parseInt($(this).parent().parent().attr('id'));
 //   var quality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
