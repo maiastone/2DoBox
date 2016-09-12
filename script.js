@@ -48,7 +48,7 @@ $('#save').on('click', function() {
 function populateDomFromLocalStorage () {
   var ideas = JSON.parse(localStorage.getItem('ideaBox'));
   ideas.forEach(function(idea){
-    addNewCard(idea.title, idea.body, idea.id);
+    addNewCard(idea.title, idea.body, idea.id, idea.quality);
   });
 }
 
@@ -77,7 +77,7 @@ function clearIdeaInput() {
 
 
 
-function addNewCard(title, body, id) {
+function addNewCard(title, body, id, quality) {
   $('.card').prepend(`
     <li id=${id}>
       <header id="card-header">
@@ -88,7 +88,7 @@ function addNewCard(title, body, id) {
       <footer id="card-footer">
         <button class="up-vote"></button>
         <button class="down-vote"></button>
-         <p class="quality-level">Quality: <span class="idea-quality-level">${'swill'}</span></p>
+         <p class="quality-level">Quality: <span class="idea-quality-level">${quality}</span></p>
       </footer></li>`
     );
 }
@@ -112,14 +112,23 @@ $('ul').on('click', '.up-vote', function () {
   var quality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
 
   if (this.id === this.id && quality === 'swill') {
+    newQuality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
     return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('plausible');
       } else if (this.id === this.id && quality === 'plausible') {
-          return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('genius');
+        newQuality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('genius');
+          return newQuality;
   }
+    //TODO: write a function to change the idea in the array
+      //something like function upVote(id, quality) { findIdeaById(id) idea.quality=quality  storeIdeasPlease()}
+  editQuality(id, newQuality.text());
 
-    storeIdeasPlease ();
-    populateDomFromLocalStorage ();
 });
+
+function editQuality (thisID, newQuality) {
+  var idea = findIdeaById(thisID);
+  idea.quality = newQuality;
+  storeIdeasPlease();
+}
 
 
 $('ul').on('click', '.down-vote', function () {
@@ -132,7 +141,7 @@ $('ul').on('click', '.down-vote', function () {
           return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('swill');
   }
       storeIdeasPlease ();
-      populateDomFromLocalStorage ();
+
 });
 
 
@@ -180,3 +189,8 @@ function editTitle (thisID, newTitle) {
 function editBody (body) {
   this.body = body;
 }
+
+//TODO: get edit body working
+//TODO: get down-vote working
+//TODO: get rid of comments
+//TODO: clean up and refactor
