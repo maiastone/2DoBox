@@ -3,7 +3,7 @@ $('document').ready(function(){
   populateDomFromLocalStorage();
 });
 
-//why do we need this code?????? project breaks without it. needs to be a part of the populate function
+
 if (localStorage.getItem('ideaBox')) {
   ideaBox = JSON.parse(localStorage.getItem('ideaBox'));
 } else {
@@ -15,8 +15,7 @@ $('ul').on('click', '.card-delete', function () {
   ideaBox = removeIdea(this.closest('li').id);
   this.closest('li').remove();
   storeIdeasPlease();
-  // stringIdeas = JSON.stringify(ideaBox);
-  // localStorage.setItem('ideas', stringIdeas);
+
 });
 
 
@@ -44,7 +43,6 @@ $('#save').on('click', function() {
 
 
 
-
 function populateDomFromLocalStorage () {
   var ideas = JSON.parse(localStorage.getItem('ideaBox'));
   ideas.forEach(function(idea){
@@ -59,13 +57,10 @@ function buildAndRenderIdea(title, body) {
   addNewCard(idea.title, idea.body, idea.id);
   addEntry(idea);
   storeIdeasPlease();
-  // var stringIdeas = JSON.stringify(ideaBox);
-  // localStorage.setItem('ideas', stringIdeas);
+
 }
 
 
-
-// each new idea is a stringified object
 function addEntry (idea) {
    ideaBox.push(idea);
 }
@@ -118,8 +113,25 @@ $('ul').on('click', '.up-vote', function () {
         newQuality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('genius');
           return newQuality;
   }
-    //TODO: write a function to change the idea in the array
-      //something like function upVote(id, quality) { findIdeaById(id) idea.quality=quality  storeIdeasPlease()}
+
+  editQuality(id, newQuality.text());
+
+});
+
+
+$('ul').on('click', '.down-vote', function () {
+  var id = parseInt($(this).parent().parent().attr('id'));
+  var quality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
+
+  if (this.id === this.id && quality === 'genius') {
+    newQuality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
+    return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('plausible');
+      } else if (this.id === this.id && quality === 'plausible') {
+        newQuality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('swill');
+        debugger;
+          return newQuality;
+  }
+
   editQuality(id, newQuality.text());
 
 });
@@ -129,20 +141,6 @@ function editQuality (thisID, newQuality) {
   idea.quality = newQuality;
   storeIdeasPlease();
 }
-
-
-$('ul').on('click', '.down-vote', function () {
-  var id = parseInt($(this).parent().parent().attr('id'));
-  var quality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
-
-  if (this.id === this.id && quality === 'genius') {
-    return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('plausible');
-      } else if (this.id === this.id && quality === 'plausible') {
-          return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('swill');
-  }
-      storeIdeasPlease ();
-
-});
 
 
 function storeIdeasPlease () {
@@ -159,6 +157,9 @@ function storeIdeasPlease () {
 // localStorage.setItemideasstringify
 //
 // }
+
+
+
 
 $('.ideas').on('blur','.card-title', function () {
 var thisID = parseInt($(this).parents('li').prop('id'));
@@ -194,3 +195,4 @@ function editBody (body) {
 //TODO: get down-vote working
 //TODO: get rid of comments
 //TODO: clean up and refactor
+//TODO: function to set key 13 to trigger blur
