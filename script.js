@@ -39,9 +39,9 @@ function clearIdeaInput() {
   $('#body').val('');
 };
 
-function findIdeaById(thisID) {
+function findIdeaById(id) {
   return this.ideaBox.find(function(idea){
-  return idea.id === thisID;
+  return idea.id === id;
   });
 };
 
@@ -51,20 +51,20 @@ function removeIdea (id) {
   });
 };
 
-function editQuality (thisID, newQuality) {
-  var idea = findIdeaById(thisID);
+function editQuality (id, newQuality) {
+  var idea = findIdeaById(id);
   idea.quality = newQuality;
   storeIdeasPlease();
 };
 
-function editTitle (thisID, newTitle) {
-  var idea = findIdeaById(thisID);
+function editTitle (id, newTitle) {
+  var idea = findIdeaById(id);
   idea.title = newTitle;
   storeIdeasPlease();
 };
 
-function editBody (thisID, newBody) {
-  var idea = findIdeaById(thisID);
+function editBody (id, newBody) {
+  var idea = findIdeaById(id);
   idea.body = newBody;
   storeIdeasPlease();
 };
@@ -77,10 +77,10 @@ function addNewCard(title, body, id, quality) {
   $('.card').prepend(`
     <li id=${id}>
     <header id="card-header">
-      <h2 class="card-title" contenteditable="true" onkeyup="">${title}</h2>
+      <h2 class="card-title" contenteditable="true">${title}</h2>
       <button class="card-delete"></button>
     </header>
-    <p class="card-body" contenteditable="true" onkeyup="addEntry">${body}</p>
+    <p class="card-body" contenteditable="true">${body}</p>
     <footer id="card-footer">
       <button class="up-vote"></button>
       <button class="down-vote"></button>
@@ -103,15 +103,15 @@ $('#save').on('click', function() {
 });
 
 $('.ideas').on('blur','.card-title', function () {
-  var thisID = parseInt($(this).parents('li').prop('id'));
+  var id = parseInt($(this).parents('li').prop('id'));
   var newTitle = $(this).text();
-  editTitle(thisID, newTitle);
+  editTitle(id, newTitle);
 });
 
 $('.ideas').on('blur','.card-body', function () {
-  var thisID = parseInt($(this).parents('li').prop('id'));
+  var id = parseInt($(this).parents('li').prop('id'));
   var newBody = $(this).text();
-  editBody(thisID, newBody);
+  editBody(id, newBody);
 });
 
 $('ul').on('click', '.up-vote', function () {
