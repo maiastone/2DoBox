@@ -1,14 +1,11 @@
 
-var ideaBox = [];
-
-
 $('document').ready(function(){
   populateDomFromLocalStorage();
 });
 
-//why do we need this code?????? project breaks without it. needs to be a part of the populate function
-if (localStorage.getItem('ideas')) {
-  ideaBox = JSON.parse(localStorage.getItem('ideas'));
+
+if (localStorage.getItem('ideaBox')) {
+  ideaBox = JSON.parse(localStorage.getItem('ideaBox'));
 } else {
   ideaBox = [];
 }
@@ -17,8 +14,8 @@ if (localStorage.getItem('ideas')) {
 $('ul').on('click', '.card-delete', function () {
   ideaBox = removeIdea(this.closest('li').id);
   this.closest('li').remove();
-  stringIdeas = JSON.stringify(ideaBox);
-  localStorage.setItem('ideas', stringIdeas);
+  storeIdeasPlease();
+
 });
 
 
@@ -46,34 +43,24 @@ $('#save').on('click', function() {
 
 
 
-
 function populateDomFromLocalStorage () {
-  var ideas = JSON.parse(localStorage.getItem('ideas'));
+  var ideas = JSON.parse(localStorage.getItem('ideaBox'));
   ideas.forEach(function(idea){
-    addNewCard(idea.title, idea.body, idea.id);
+    addNewCard(idea.title, idea.body, idea.id, idea.quality);
   });
 }
 
-function Idea (id, title, body, quality) {
-    this.id = id || Date.now();
-    this.title = title;
-    this.body = body;
-    this.quality = quality || 'swill';
-
-}
 
 
 function buildAndRenderIdea(title, body) {
   var idea = new Idea(title, body);
   addNewCard(idea.title, idea.body, idea.id);
   addEntry(idea);
-  var stringIdeas = JSON.stringify(ideaBox);
-  localStorage.setItem('ideas', stringIdeas);
+  storeIdeasPlease();
+
 }
 
 
-
-// each new idea is a stringified object
 function addEntry (idea) {
    ideaBox.push(idea);
 }
@@ -85,18 +72,18 @@ function clearIdeaInput() {
 
 
 
-function addNewCard(title, body, id) {
+function addNewCard(title, body, id, quality) {
   $('.card').prepend(`
     <li id=${id}>
       <header id="card-header">
         <h2 class="card-title" contenteditable="true" onkeyup="">${title}</h2>
-        <button class="card-delete">delete</button>
+        <button class="card-delete"></button>
       </header>
       <p class="card-body" contenteditable="true" onkeyup="addEntry">${body}</p>
       <footer id="card-footer">
-        <button class="up-vote">up</button>
-        <button class="down-vote">down</button>
-         <p class="quality-level">Quality: <span class="idea-quality-level">${'swill'}</span></p>
+        <button class="up-vote"></button>
+        <button class="down-vote"></button>
+         <p class="quality-level">Quality: <span class="idea-quality-level">${quality}</span></p>
       </footer></li>`
     );
 }
@@ -120,13 +107,15 @@ $('ul').on('click', '.up-vote', function () {
   var quality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
 
   if (this.id === this.id && quality === 'swill') {
+    newQuality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
     return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('plausible');
       } else if (this.id === this.id && quality === 'plausible') {
-          return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('genius');
+        newQuality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('genius');
+          return newQuality;
   }
 
-    storeIdeasPlease ();
-    populateDomFromLocalStorage ();
+  editQuality(id, newQuality.text());
+
 });
 
 
@@ -135,17 +124,27 @@ $('ul').on('click', '.down-vote', function () {
   var quality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
 
   if (this.id === this.id && quality === 'genius') {
+    newQuality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text();
     return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('plausible');
       } else if (this.id === this.id && quality === 'plausible') {
-          return $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('swill');
+        newQuality = $(this).siblings().closest('.quality-level').children($('.idea-quality-level')).text('swill');
+        debugger;
+          return newQuality;
   }
-      storeIdeasPlease ();
-      populateDomFromLocalStorage ();
+
+  editQuality(id, newQuality.text());
+
 });
+
+function editQuality (thisID, newQuality) {
+  var idea = findIdeaById(thisID);
+  idea.quality = newQuality;
+  storeIdeasPlease();
+}
 
 
 function storeIdeasPlease () {
-  localStorage.setItem('ideas', ideaBox);
+  localStorage.setItem("ideaBox", JSON.stringify(ideaBox));
 }
 
 //store to local, clear the page, render again with new stuff
@@ -159,28 +158,41 @@ function storeIdeasPlease () {
 //
 // }
 
+
+
+
 $('.ideas').on('blur','.card-title', function () {
 var thisID = parseInt($(this).parents('li').prop('id'));
 var newTitle = $(this).text();
-
-// function editTitle(thisID, newTitle);
+editTitle(thisID, newTitle);
 
 });
 
-//function findIdeaById(id) {
-  //search ideabox array for an idea by the id
-  //return the idea that matches this ID
-  //don't forget to parseInt the ID
+function findIdeaById(thisID) {
+  return this.ideaBox.find(function(idea){
+    return idea.id === thisID;
+  });
+}
+
+//   search ideabox array for an idea by the id
+//   return the idea that matches this ID
+//   don't forget to parseInt the ID
 // }
 
 // ideaBox.find(thisID).editTitle(newTitle);
 
 function editTitle (thisID, newTitle) {
-  var idea = findIdeaById(id); //TODO: write this function
+  var idea = findIdeaById(thisID);
   idea.title = newTitle;
-  storeIdeasPlease(); //TODO: write this function
+  storeIdeasPlease();
 }
 
 function editBody (body) {
   this.body = body;
 }
+
+//TODO: get edit body working
+//TODO: get down-vote working
+//TODO: get rid of comments
+//TODO: clean up and refactor
+//TODO: function to set key 13 to trigger blur
