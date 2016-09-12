@@ -78,14 +78,14 @@ function storeIdeasPlease () {
 function addNewCard(title, body, id, quality) {
   $('.card').prepend(`
     <li id=${id}>
-    <header id="card-header">
+    <header class="card-header">
       <h2 class="card-title" contenteditable="true">${title}</h2>
       <button class="card-delete"></button>
     </header>
     <p class="card-body" contenteditable="true">${body}</p>
-    <footer id="card-footer">
-      <button class="up-vote"></button>
-      <button class="down-vote"></button>
+    <footer class="card-footer">
+      <button class="up-vote vote"></button>
+      <button class="down-vote vote"></button>
       <p class="quality-level">Quality: <span class="idea-quality-level">${quality}</span></p>
     </footer></li>`
   );
@@ -148,7 +148,6 @@ $(document).ready(function(){
   $('#search').keyup(function(){
     var filter = $(this).val(), count = 0;
     $('.card li').each(function(){
-      console.log($(this).text());
       if ($(this).text().search(new RegExp(filter, "i")) < 0) {
         $(this).hide();
       } else {
