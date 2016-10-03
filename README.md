@@ -1,2 +1,2 @@
-# idea-box
-idea box project
+# 2DoBox
+idea box project pivot
