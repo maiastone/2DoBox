@@ -44,30 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	const toDoList = __webpack_require__ (1);
-
-	var $titleInput = $('#title');
-	var $bodyInput = $('#body');
-
-
-	$('document').ready(function(){
-	  // populateDomFromLocalStorage();
-	});
-
-
-	var ToDoList = new toDoList();
-
-
-	$('#save').on('click', function() {
-	  var task = ToDoList.addTask($titleInput.val(), $bodyInput.val());
-	  $('.ideas').prepend(ToDoList.generateTaskHTML(task));
-	  clearIdeaInput();
-	});
-
-	$('ul').on('click', '.card-delete', function () {
-	  ToDoList.removeTask(this.closest('li').id);
-	  this.closest('li').remove();
-	});
+	__webpack_require__ (1);
 
 
 /***/ },
@@ -76,32 +53,36 @@
 
 	const Task = __webpack_require__(2);
 
-	function ToDoList() {
-	  this.taskArray = [];
+	var $titleInput = $('#title')
+	var $bodyInput = $('#body')
+	var $taskList = $('#task-list')
 
 
-	  this.addTask = function(title, body) {
+	var ToDoList = {
+
+	  taskArray : [],
+
+	  addTask : function(title, body) {
 	    var newTask = new Task (title, body);
-	    // this.renderNewTask(newTask.title, newTask.body, newTask.id, newTask.importance);
 	    this.taskArray.push(newTask);
-	    // this.storeTasks();
+	    this.storeTasks();
 	    return newTask;
-	  };
+	  },
 
-	  this.removeTask = function(id){
-	    this.taskArray = taskArray.filter(function(task){
+	  removeTask : function(id){
+	    this.taskArray = this.taskArray.filter(function(task){
 	      return parseInt(id) !== task.id;
 	    });
 	    this.storeTasks();
-	  };
+	  },
 
-	  this.findIdeaById = function(id) {
+	  findIdeaById : function(id) {
 	    return this.ideaBox.find(function(task){
 	    return task.id === id;
 	    });
-	  };
+	  },
 
-	  this.generateTaskHTML = function(task){
+	  generateTaskHTML : function(task){
 	    return `
 	      <li id=${task.id}>
 	      <header class="card-header">
@@ -114,18 +95,55 @@
 	        <button class="down-vote vote"></button>
 	        <p class="importance-level">Importance: <span class="idea-importance-level">${task.importance}</span></p>
 	      </footer></li>`;
-	  };
+	  },
 
+	  storeTasks : function(){
+	    localStorage.setItem('taskList', JSON.stringify(this.taskArray));
+	  },
+
+	  retrieveTasks : function(){
+	    tasksFromStorage = JSON.parse(localStorage.getItem('taskList'));
+
+	    if(tasksFromStorage!==null){
+	    for (var i = 0; i < tasksFromStorage.length; i++){
+	      this.taskList[i] = new Task(tasksFromStorage[i].title, tasksFromStorage[i].body, tasksFromStorage[i].id, tasksFromStorage[i].importance);
+	    }
+	    return this.taskList;
+	    }
+	  },
+
+	  populateDomFromLocalStorage: function(){
+	    $taskList.html('');
+	    this.retrieveTasks();
+	    this.taskArray.forEach(function(task){
+	      $ideaList.prepend(generateTaskHTML(task));
+	    });
+	  }
 
 	}
-	module.exports = ToDoList;
+
+
+	$('document').ready(function(){
+	  ToDoList.populateDomFromLocalStorage();
+	});
+
+	$('#save').on('click', function() {
+	  var task = ToDoList.addTask($titleInput.val(), $bodyInput.val());
+	  $taskList.prepend(ToDoList.generateTaskHTML(task));
+	  clearIdeaInput();
+	});
+
+	$taskList.on('click', '.card-delete', function () {
+	  ToDoList.removeTask(this.closest('li').id);
+	  this.closest('li').remove();
+	});
 
 
 /***/ },
 /* 2 */
 /***/ function(module, exports) {
 
-
+	
 
 
 	function Task (title, body, id, importance) {
