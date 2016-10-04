@@ -78,11 +78,31 @@
 
 	  findTaskById : function(id) {
 	    return this.taskArray.find(function(task){
+	    console.log(id);
 	    return task.id === id;
 	    });
 	  },
 
+	  convertImportance : function (importance){
+	    switch (importance) {
+	      case 1:
+	        return 'Critical'
+	      case 2:
+	        return 'High'
+	      case 3:
+	        return 'Normal'
+	      case 4:
+	        return 'Low'
+	      case 5:
+	        return 'None'
+	      default:
+	        break;
+
+	    }
+	  },
+
 	  generateTaskHTML : function(task){
+	    var convertedImportance = this.convertImportance(task.importance);
 	    return `
 	      <li id=${task.id}>
 	      <header class="card-header">
@@ -93,7 +113,7 @@
 	      <footer class="card-footer">
 	        <button class="up-vote vote"></button>
 	        <button class="down-vote vote"></button>
-	        <p class="importance-level">Importance: <span class="idea-importance-level">${task.importance}</span></p>
+	        <p class="importance-level">Importance: <span class="idea-importance-level">${convertedImportance}</span></p>
 	      </footer></li>`;
 	  },
 
@@ -138,11 +158,22 @@
 	  this.closest('li').remove();
 	});
 
-	$tasklist.on('click', '.up-vote', function(){
+	$taskList.on('click', '.up-vote', function(){
 	  // 5 levels of importance.  default is normal  on click can go up or down-vote
 	  // save to local storage
-	  var id = parseInt($(this).closest('li').id)
+	  var id = parseInt($(this).closest('li').attr('id'));
+	  console.log(ToDoList.findTaskById(id));
 	  ToDoList.findTaskById(id).upVote();
+	  ToDoList.storeTasks();
+	  ToDoList.populateDomFromLocalStorage();
+	})
+
+	$taskList.on('click', '.down-vote', function(){
+	  // 5 levels of importance.  default is normal  on click can go up or down-vote
+	  // save to local storage
+	  var id = parseInt($(this).closest('li').attr('id'));
+	  console.log(ToDoList.findTaskById(id));
+	  ToDoList.findTaskById(id).downVote();
 	  ToDoList.storeTasks();
 	  ToDoList.populateDomFromLocalStorage();
 	})
@@ -164,11 +195,11 @@
 
 
 	Task.prototype.upVote = function () {
-	  this.importance < 5 ? this.importance++ : this.importance;
+	  this.importance > 1 ? this.importance-- : null;
 	};
 
 	Task.prototype.downVote = function () {
-	  this.importance > 0 ? this.importance-- : this.importance;
+	  this.importance < 5 ? this.importance++ : null;
 	};
 
 
