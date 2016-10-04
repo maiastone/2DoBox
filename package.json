@@ -4,7 +4,9 @@
   "description": "keep your to do list",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --hot --inline",
+    "build": "webpack",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
