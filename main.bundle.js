@@ -82,7 +82,7 @@
 
 	  this.addTask = function(title, body) {
 	    var newTask = new Task (title, body);
-	    // this.renderNewTask(newTask.title, newTask.body, newTask.id, newTask.quality);
+	    // this.renderNewTask(newTask.title, newTask.body, newTask.id, newTask.importance);
 	    this.taskArray.push(newTask);
 	    // this.storeTasks();
 	    return newTask;
@@ -112,7 +112,7 @@
 	      <footer class="card-footer">
 	        <button class="up-vote vote"></button>
 	        <button class="down-vote vote"></button>
-	        <p class="quality-level">Quality: <span class="idea-quality-level">${task.importance}</span></p>
+	        <p class="importance-level">Importance: <span class="idea-importance-level">${task.importance}</span></p>
 	      </footer></li>`;
 	  };
 
@@ -125,7 +125,7 @@
 /* 2 */
 /***/ function(module, exports) {
 
-	
+
 
 
 	function Task (title, body, id, importance) {

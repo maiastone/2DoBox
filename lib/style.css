@@ -46,7 +46,7 @@ li {
 .card-delete {
   height: 20px;
   width: 20px;
-  background-image:url('images/delete.svg');
+  background-image:url('../images/delete.svg');
   background-repeat: no-repeat;
   background-color: #ffffff;
   border: none;
@@ -55,7 +55,7 @@ li {
 }
 
 .card-delete:hover {
-  background-image:url('images/delete-hover.svg');
+  background-image:url('../images/delete-hover.svg');
 }
 
 .vote {
@@ -70,19 +70,19 @@ li {
 }
 
 .up-vote {
-  background-image:url('images/upvote.svg');
+  background-image:url('../images/upvote.svg');
 }
 
 .up-vote:hover {
-  background-image:url('images/upvote-hover.svg');
+  background-image:url('../images/upvote-hover.svg');
 }
 
 .down-vote {
-  background-image:url('images/downvote.svg');
+  background-image:url('../images/downvote.svg');
 }
 
 .down-vote:hover {
-  background-image:url('images/downvote-hover.svg');
+  background-image:url('../images/downvote-hover.svg');
 }
 
 .quality-level {
