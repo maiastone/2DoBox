@@ -76,8 +76,8 @@
 	    this.storeTasks();
 	  },
 
-	  findIdeaById : function(id) {
-	    return this.ideaBox.find(function(task){
+	  findTaskById : function(id) {
+	    return this.taskArray.find(function(task){
 	    return task.id === id;
 	    });
 	  },
@@ -106,9 +106,9 @@
 
 	    if(tasksFromStorage!==null){
 	    for (var i = 0; i < tasksFromStorage.length; i++){
-	      this.taskList[i] = new Task(tasksFromStorage[i].title, tasksFromStorage[i].body, tasksFromStorage[i].id, tasksFromStorage[i].importance);
+	      this.taskArray[i] = new Task(tasksFromStorage[i].title, tasksFromStorage[i].body, tasksFromStorage[i].id, tasksFromStorage[i].importance);
 	    }
-	    return this.taskList;
+	    return this.taskArray;
 	    }
 	  },
 
@@ -116,8 +116,8 @@
 	    $taskList.html('');
 	    this.retrieveTasks();
 	    this.taskArray.forEach(function(task){
-	      $ideaList.prepend(generateTaskHTML(task));
-	    });
+	      $taskList.prepend(this.generateTaskHTML(task));
+	    }.bind(this));
 	  }
 
 	}
@@ -137,6 +137,15 @@
 	  ToDoList.removeTask(this.closest('li').id);
 	  this.closest('li').remove();
 	});
+
+	$tasklist.on('click', '.up-vote', function(){
+	  // 5 levels of importance.  default is normal  on click can go up or down-vote
+	  // save to local storage
+	  var id = parseInt($(this).closest('li').id)
+	  ToDoList.findTaskById(id).upVote();
+	  ToDoList.storeTasks();
+	  ToDoList.populateDomFromLocalStorage();
+	})
 
 
 /***/ },
