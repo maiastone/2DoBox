@@ -88,8 +88,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../css-loader/index.js!./mocha.css", function() {
-				var newContent = require("!!./../css-loader/index.js!./mocha.css");
+			module.hot.accept("!!./../mocha-loader/node_modules/css-loader/index.js!./mocha.css", function() {
+				var newContent = require("!!./../mocha-loader/node_modules/css-loader/index.js!./mocha.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
