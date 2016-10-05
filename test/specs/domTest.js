@@ -41,6 +41,30 @@ describe('on save', function(){
     asserts.include( taskList.getText(), taskBody.getValue())
   });
 
+  it('should add the task to the page, check validity, refresh page, check validity', function(){
+    browser.url('/')
+    var taskTitle = browser.element('#title')
+    var taskBody = browser.element('#body')
+
+    taskTitle.setValue('this is a title')
+    taskBody.setValue('this is a body')
+
+    browser.click('#save')
+
+    var taskList = browser.element('#task-list')
+
+    asserts.include( taskList.getText(), taskTitle.getValue())
+    asserts.include( taskList.getText(), taskBody.getValue())
+
+    browser.refresh();
+
+    asserts.include( taskList.getText(), taskTitle.getValue())
+    asserts.include( taskList.getText(), taskBody.getValue())
+
+
+  });
+
+
   it('allows me to delete a single idea from the page', function(){
     browser.url('/');
     var taskTitle = browser.element('#title')
@@ -77,12 +101,14 @@ describe('on save', function(){
     browser.click('.card-delete')
     browser.click('.card-delete')
 
-
     var ideaCountAfterDelete = browser.elements('li').getText().length;
 
     assert.equal(ideaCountAfterDelete,ideaCountBeforeDelete-2);
-
   });
+
+
+
+
 
 
 
