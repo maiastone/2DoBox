@@ -56,17 +56,24 @@
 	var $titleInput = $('#title')
 	var $bodyInput = $('#body')
 	var $taskList = $('#task-list')
+	var $search = $('#search')
 
 
 	var ToDoList = {
 
 	  taskArray : [],
+	  showCompleted : false,
 
 	  addTask : function(title, body) {
 	    var newTask = new Task (title, body);
 	    this.taskArray.push(newTask);
 	    this.storeTasks();
 	    return newTask;
+	  },
+
+	  clearInputFields : function(){
+	    $titleInput.val('');
+	    $bodyInput.val('');
 	  },
 
 	  removeTask : function(id){
@@ -78,7 +85,6 @@
 
 	  findTaskById : function(id) {
 	    return this.taskArray.find(function(task){
-	    console.log(id);
 	    return task.id === id;
 	    });
 	  },
@@ -97,7 +103,6 @@
 	        return 'None'
 	      default:
 	        break;
-
 	    }
 	  },
 
@@ -105,15 +110,18 @@
 	    var convertedImportance = this.convertImportance(task.importance);
 	    return `
 	      <li id=${task.id}>
-	      <header class="card-header">
-	        <h2 class="card-title" contenteditable="true">${task.title}</h2>
+	        <button class="task-complete">Completed</button>
+	        <label for="card-delete">Delete</label>
 	        <button class="card-delete"></button>
+	      <h2 class="card-title" contenteditable="true">${task.title}</h2>
+	      <header class="card-header">
+
 	      </header>
 	      <p class="card-body" contenteditable="true">${task.body}</p>
 	      <footer class="card-footer">
 	        <button class="up-vote vote"></button>
 	        <button class="down-vote vote"></button>
-	        <p class="importance-level">Importance: <span class="idea-importance-level">${convertedImportance}</span></p>
+	        <p class="importance-level">Importance: <span class="importance-text">${convertedImportance}</span></p>
 	      </footer></li>`;
 	  },
 
@@ -126,31 +134,85 @@
 
 	    if(tasksFromStorage!==null){
 	    for (var i = 0; i < tasksFromStorage.length; i++){
-	      this.taskArray[i] = new Task(tasksFromStorage[i].title, tasksFromStorage[i].body, tasksFromStorage[i].id, tasksFromStorage[i].importance);
+	      this.taskArray[i] = new Task(tasksFromStorage[i].title, tasksFromStorage[i].body, tasksFromStorage[i].id, tasksFromStorage[i].importance, tasksFromStorage[i].completed);
 	    }
 	    return this.taskArray;
 	    }
 	  },
 
-	  populateDomFromLocalStorage: function(){
+	  renderTaskList: function(){
 	    $taskList.html('');
 	    this.retrieveTasks();
 	    this.taskArray.forEach(function(task){
-	      $taskList.prepend(this.generateTaskHTML(task));
+	      if(task.completed === false){
+	        $taskList.prepend(this.generateTaskHTML(task));
+	      }
 	    }.bind(this));
-	  }
+	  },
 
+	  toggleShowCompletedTasks: function(){
+	    if(this.showCompleted === false){
+	      this.retrieveTasks();
+	      this.taskArray.forEach(function(task){
+	        if(task.completed === true){
+	          $taskList.prepend(this.generateTaskHTML(task));
+	          $taskList.children("[id="+task.id+"]").css('opacity', '0.1');
+	          $taskList.children("[id="+task.id+"]").children('.task-complete').text('Uncomplete Task')
+	        }
+	      }.bind(this));
+	      $('#toggle-completed').text('Hide Completed Tasks')
+	      this.showCompleted = true;
+	      }else{
+	      this.renderTaskList()
+	      $('#toggle-completed').text('Show Completed Tasks')
+	      this.showCompleted = false;
+	    }
+	  },
+
+	  showOrHideTasks: function(searchString){
+	   for (var i = 0; i < this.taskArray.length; i++) {
+	     var existingTask = this.taskArray[i];
+
+	     if(!(this.taskArray[i].title.includes(searchString)) && !(this.taskArray[i].body.includes(searchString))){
+	         $search.siblings().children("[id="+this.taskArray[i].id+"]").hide();
+	     } else {
+	         $search.siblings().children("[id="+this.taskArray[i].id+"]").show();
+	     }
+	   }
+	 },
+
+	  toggleTaskCompleted: function(id, ctx){
+	    if(ToDoList.findTaskById(id).completed === true){
+	      ToDoList.findTaskById(id).completed = false;
+	      ctx.closest('li').css('opacity', '1');
+	      ctx.closest('li').removeClass('complete');
+	      ctx.text('Complete Task')
+	    }else{
+	      ToDoList.findTaskById(id).completed = true;
+	      ctx.closest('li').css('opacity', '0.1');
+	      ctx.closest('li').addClass('complete');
+	      ctx.text('Uncomplete Task')
+	    }
+	    this.storeTasks();
+	  },
+
+	  getID : function(ctx){
+	    return parseInt(ctx.closest('li').attr('id'));
+	  }
 	}
 
-
 	$('document').ready(function(){
-	  ToDoList.populateDomFromLocalStorage();
+	  ToDoList.renderTaskList();
 	});
 
 	$('#save').on('click', function() {
 	  var task = ToDoList.addTask($titleInput.val(), $bodyInput.val());
 	  $taskList.prepend(ToDoList.generateTaskHTML(task));
-	  clearIdeaInput();
+	  ToDoList.clearInputFields();
+	});
+
+	$('#toggle-completed').on('click', function(){
+	  ToDoList.toggleShowCompletedTasks();
 	});
 
 	$taskList.on('click', '.card-delete', function () {
@@ -158,24 +220,41 @@
 	  this.closest('li').remove();
 	});
 
+	var updateImportanceText = function (ctx){
+	  ctx.siblings().children('.importance-text').text(ToDoList.convertImportance(ToDoList.findTaskById(ToDoList.getID(ctx)).importance));
+	}
+
 	$taskList.on('click', '.up-vote', function(){
-	  // 5 levels of importance.  default is normal  on click can go up or down-vote
-	  // save to local storage
-	  var id = parseInt($(this).closest('li').attr('id'));
-	  console.log(ToDoList.findTaskById(id));
-	  ToDoList.findTaskById(id).upVote();
+	  ToDoList.findTaskById(ToDoList.getID($(this))).upVote();
 	  ToDoList.storeTasks();
-	  ToDoList.populateDomFromLocalStorage();
+	  updateImportanceText($(this));
 	})
 
 	$taskList.on('click', '.down-vote', function(){
-	  // 5 levels of importance.  default is normal  on click can go up or down-vote
-	  // save to local storage
-	  var id = parseInt($(this).closest('li').attr('id'));
-	  console.log(ToDoList.findTaskById(id));
-	  ToDoList.findTaskById(id).downVote();
+	  ToDoList.findTaskById(ToDoList.getID($(this))).downVote();
 	  ToDoList.storeTasks();
-	  ToDoList.populateDomFromLocalStorage();
+	  updateImportanceText($(this));
+	})
+
+	$taskList.on('click', '.task-complete', function(){
+	  ToDoList.toggleTaskCompleted(ToDoList.getID($(this)),$(this));
+	});
+
+	$taskList.on('blur', '.card-title', function(){
+	  var newTitle = $(this).text()
+	  ToDoList.findTaskById(ToDoList.getID($(this))).editTitle(newTitle);
+	  ToDoList.storeTasks();
+	})
+
+	$taskList.on('blur', '.card-body', function(){
+	  var newBody = $(this).text()
+	  ToDoList.findTaskById(ToDoList.getID($(this))).editBody(newBody);
+	  ToDoList.storeTasks();
+	})
+
+	$search.on('keyup', function(){
+	  var searchString = $(this).val();
+	  ToDoList.showOrHideTasks(searchString);
 	})
 
 
@@ -186,11 +265,12 @@
 	
 
 
-	function Task (title, body, id, importance) {
+	function Task (title, body, id, importance, completed) {
 	  this.title = title;
 	  this.body = body;
 	  this.id = id || Date.now();
 	  this.importance = importance || 3 ;
+	  this.completed = completed || false;
 	}
 
 
