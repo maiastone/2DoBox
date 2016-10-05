@@ -3,7 +3,6 @@ const Task = require('../lib/task.js')
 require('../lib/2Do.js')
 
 describe('Task Object Unit Tests', function(){
-
   var task = new Task();
 
   it('Task should be an object', function(){
@@ -40,4 +39,9 @@ describe('Task Object Unit Tests', function(){
     task.editBody('new body')
     assert.equal(task.body, 'new body')
   })
+})
+
+describe('2DoBox unit tests',function(){
+
+
 })
