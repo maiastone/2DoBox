@@ -86,9 +86,17 @@ ul {
   height: 25px;
 }
 
+.ideas {
+
+}
+
 #search {
   width: 60%;
   height: 25px;
+}
+
+#toggle-completed {
+  margin: 45px;
 }
 
 #save {
@@ -131,23 +139,29 @@ ul {
   outline: none;
 }
 
-.card-delete, .task-complete, .up-vote, .down-vote {
-  background-image: url('../2DoBox-sprite.png');
+.card-delete, .up-vote, .down-vote {
+  background-image: url('../images/button-sprite.png');
   height: 16px;
   width: 16px;
 }
 
 .card-delete {
-  background: url('../2DoBox-sprite.png') 0 0;
+  background: url('../images/button-sprite.png') 0px 0px;
+  outline: 0;
 }
 
 .up-vote {
-  background-position: 0px -36px;
+  background: url('../images/button-sprite.png') 0px -36px;
 }
 
 .down-vote {
   background-position: -40px -36px;
 }
+
+.task-complete {
+  width: auto;
+}
+
 
 
 @media screen and (min-width: 300px) {
