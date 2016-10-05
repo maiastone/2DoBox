@@ -162,7 +162,9 @@ ul {
   width: auto;
 }
 
-
+.completed{
+  opacity: 0.1;
+}
 
 @media screen and (min-width: 300px) {
   li {
