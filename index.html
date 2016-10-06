@@ -12,12 +12,24 @@
   <body>
     <section class="input">
         <h1>2Do<span id="box">List</span></h1>
-        <input type="text" id="title" placeholder="Title"></input>
-        <textarea id="body" placeholder="Body"></textarea>
-        <button type="submit" id="save">save</button>
+        <form>
+          <input type="text" id="title" placeholder="Title"></input>
+          <span id='title-char-count'>0</span>
+          <textarea id="body" placeholder="Body"></textarea>
+          <span id='body-char-count'>0</span>
+          <button type="submit" id="save">save</button>
+        </form>
     </section>
     <section class="ideas">
         <input type="text" id="search" placeholder="Search"></input>
+        <section id='#filter-buttons'>
+          <h4>Filter by Importance</h4>
+          <button class='filter-button' id='filt-critical'>Critical</button>
+          <button class='filter-button' id='filt-high'>High</button>
+          <button class='filter-button' id='filt-normal'>Normal</button>
+          <button class='filter-button' id='filt-low'>Low</button>
+          <button class='filter-button' id='filt-none'>None</button>
+        <section>
         <button id="toggle-completed">Show Completed Tasks</button>
         <ul id="task-list"></ul>
         <button id="show-more-tasks">Show More...</button>
