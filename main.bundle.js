@@ -46,7 +46,7 @@
 
 	__webpack_require__ (1);
 	__webpack_require__ (3);
-	__webpack_require__ (7);
+	__webpack_require__ (8);
 
 
 /***/ },
@@ -382,7 +382,7 @@
 	var content = __webpack_require__(4);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(6)(content, {});
+	var update = __webpack_require__(7)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -407,7 +407,7 @@
 
 
 	// module
-	exports.push([module.id, "* {\n  box-sizing: border-box; }\n\nbody {\n  font-family: 'Questrial', sans-serif;\n  letter-spacing: extended; }\n\nh1 {\n  font-family: 'Oswald', sans-serif;\n  color: #0076FF;\n  font-size: 24px;\n  text-align: center;\n  letter-spacing: .5px;\n  padding-top: 10px; }\n\nh2 {\n  font-family: 'Roboto Slab', serif;\n  color: #6d6e71;\n  font-size: 20px;\n  padding-top: 10px; }\n\np {\n  color: #939598; }\n\nli {\n  border-bottom: 3px solid #d1d3d4;\n  width: 75%;\n  margin: 0 auto; }\n\nul {\n  list-style: none; }\n\n.input {\n  background-color: #C7C7CD;\n  padding-bottom: 10px; }\n\n.card-body {\n  padding: 10px 0;\n  line-height: 1.2em;\n  font-stretch: expanded; }\n\n.importance-level {\n  color: #6d6e71;\n  font-size: 14px; }\n\n.vote {\n  border: none; }\n\n.importance-level {\n  color: #6d6e71;\n  font-size: 12px;\n  margin: 8px 0px 0px 8px; }\n\n.card-header {\n  display: flex;\n  justify-content: space-between;\n  margin-top: 15px; }\n\n.card-footer {\n  display: flex;\n  margin-bottom: 5px; }\n\n#title, #body, #save, #search {\n  display: block;\n  margin: 10px auto;\n  width: 60%;\n  border: 1px solid #BFC3C4; }\n\n#title {\n  height: 25px; }\n\n#search, #save {\n  width: 60%;\n  height: 30px; }\n\n#toggle-completed {\n  margin-left: 20%;\n  margin-bottom: 10px; }\n\n#save {\n  background-color: #0076FF;\n  color: #ffffff;\n  font-size: 1.2em;\n  outline: 0px;\n  border: none;\n  padding: 0px; }\n\n#save:hover {\n  background-color: #54C7FC; }\n\n#save:disabled {\n  background-color: gray; }\n\n#body {\n  padding-bottom: 75px;\n  resize: none;\n  -webkit-appearance: textfield;\n  height: 35px; }\n\n.up-vote, .down-vote, #title, #body, #search {\n  outline: 0; }\n\n.task-complete {\n  background-color: white; }\n\n#card-buttons {\n  display: flex;\n  justify-content: flex-end; }\n\n#box {\n  color: #6d6e71; }\n\n::-webkit-input-placeholder {\n  font-size: 1.1em;\n  letter-spacing: 1px;\n  padding-left: 3px; }\n\n[contenteditable=\"true\"]:active, [contenteditable=\"true\"]:focus {\n  border: none;\n  outline: none; }\n\n.card-delete {\n  background: url(" + __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../images/buttons-sprite.svg\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())) + ") -6px -6px no-repeat;\n  width: 30px;\n  height: 30px;\n  border: none; }\n\n.up-vote {\n  background: url(" + __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../images/buttons-sprite.svg\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())) + ") no-repeat -38px 0px;\n  width: 20px;\n  height: 38px; }\n\n.down-vote {\n  background: url(" + __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../images/buttons-sprite.svg\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())) + ") no-repeat 0px -35px;\n  width: 20px;\n  height: 38px;\n  margin-left: 10px; }\n\n.task-complete {\n  width: auto; }\n\n.completed {\n  opacity: 0.1; }\n\n@media screen and (min-width: 300px) {\n  li {\n    padding: 2px 0 2px 5px; } }\n\n@media screen and (min-width: 600px) {\n  #body {\n    padding: 0px 2px 0px 2px;\n    height: 50px; } }\n", ""]);
+	exports.push([module.id, "* {\n  box-sizing: border-box; }\n\nbody {\n  font-family: 'Questrial', sans-serif;\n  letter-spacing: extended; }\n\nh1 {\n  font-family: 'Oswald', sans-serif;\n  color: #0076FF;\n  font-size: 24px;\n  text-align: center;\n  letter-spacing: .5px;\n  padding-top: 10px; }\n\nh2 {\n  font-family: 'Roboto Slab', serif;\n  color: #6d6e71;\n  font-size: 20px;\n  padding-top: 10px; }\n\np {\n  color: #939598; }\n\nli {\n  border-bottom: 3px solid #d1d3d4;\n  width: 75%;\n  margin: 0 auto; }\n\nul {\n  list-style: none; }\n\n.input {\n  background-color: #C7C7CD;\n  padding-bottom: 10px; }\n\n.card-body {\n  padding: 10px 0;\n  line-height: 1.2em;\n  font-stretch: expanded; }\n\n.importance-level {\n  color: #6d6e71;\n  font-size: 14px; }\n\n.vote {\n  border: none; }\n\n.importance-level {\n  color: #6d6e71;\n  font-size: 12px;\n  margin: 8px 0px 0px 8px; }\n\n.card-header {\n  display: flex;\n  justify-content: space-between;\n  margin-top: 15px; }\n\n.card-footer {\n  display: flex;\n  margin-bottom: 5px; }\n\n#title, #body, #save, #search {\n  display: block;\n  margin: 10px auto;\n  width: 60%;\n  border: 1px solid #BFC3C4; }\n\n#title {\n  height: 25px; }\n\n#search, #save {\n  width: 60%;\n  height: 30px; }\n\n#toggle-completed {\n  margin-left: 20%;\n  margin-bottom: 10px; }\n\n#save {\n  background-color: #0076FF;\n  color: #ffffff;\n  font-size: 1.2em;\n  outline: 0px;\n  border: none;\n  padding: 0px; }\n\n#save:hover {\n  background-color: #54C7FC; }\n\n#save:disabled {\n  background-color: gray; }\n\n#body {\n  padding-bottom: 75px;\n  resize: none;\n  -webkit-appearance: textfield;\n  height: 35px; }\n\n.up-vote, .down-vote, #title, #body, #search {\n  outline: 0; }\n\n.task-complete {\n  background-color: white; }\n\n#card-buttons {\n  display: flex;\n  justify-content: flex-end; }\n\n#box {\n  color: #6d6e71; }\n\n::-webkit-input-placeholder {\n  font-size: 1.1em;\n  letter-spacing: 1px;\n  padding-left: 3px; }\n\n[contenteditable=\"true\"]:active, [contenteditable=\"true\"]:focus {\n  border: none;\n  outline: none; }\n\n.card-delete {\n  background: url(" + __webpack_require__(6) + ") -6px -6px no-repeat;\n  width: 30px;\n  height: 30px;\n  border: none; }\n\n.up-vote {\n  background: url(" + __webpack_require__(6) + ") no-repeat -38px 0px;\n  width: 20px;\n  height: 38px; }\n\n.down-vote {\n  background: url(" + __webpack_require__(6) + ") no-repeat 0px -35px;\n  width: 20px;\n  height: 38px;\n  margin-left: 10px; }\n\n.task-complete {\n  width: auto; }\n\n.completed {\n  opacity: 0.1; }\n\n@media screen and (min-width: 300px) {\n  li {\n    padding: 2px 0 2px 5px; } }\n\n@media screen and (min-width: 600px) {\n  #body {\n    padding: 0px 2px 0px 2px;\n    height: 50px; } }\n", ""]);
 
 	// exports
 
@@ -470,6 +470,12 @@
 
 /***/ },
 /* 6 */
+/***/ function(module, exports) {
+
+	module.exports = "\"data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8' standalone='no'?%3E %3Csvg width='58px' height='66px' viewBox='0 0 58 66' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E %3C!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch --%3E %3Ctitle%3EGroup%3C/title%3E %3Cdesc%3ECreated with Sketch.%3C/desc%3E %3Cdefs%3E%3C/defs%3E %3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E %3Cg id='Group' transform='translate(1.000000, 0.000000)'%3E %3Cg id='Cell-Elements/Delete-Reveal'%3E %3Crect id='Cell-Frame' x='0' y='0' width='54' height='44'%3E%3C/rect%3E %3Cg id='Float' stroke-width='1' fill-rule='evenodd' transform='translate(12.000000, 12.000000)'%3E %3Cellipse id='Circle' fill='%23FE3824' cx='11' cy='11' rx='11' ry='11'%3E%3C/ellipse%3E %3Crect id='Dash' fill='%23FFFFFF' x='5.5' y='10.5' width='11' height='1'%3E%3C/rect%3E %3C/g%3E %3C/g%3E %3Cg id='Group-2' transform='translate(38.000000, 0.000000)' stroke='%23FF9600'%3E %3Cpolygon id='Triangle' fill='%23FF9600' points='9 0 18 15 0 15'%3E%3C/polygon%3E %3Cpath d='M9,14.5 L9,27.5' id='Line' stroke-width='4' stroke-linecap='square'%3E%3C/path%3E %3C/g%3E %3Cg id='Group-Copy-2' transform='translate(9.000000, 52.000000) scale(1, -1) translate(-9.000000, -52.000000) translate(0.000000, 38.000000)' stroke='%23FF9600'%3E %3Cpolygon id='Triangle' fill='%23FF9600' points='9 0 18 15 0 15'%3E%3C/polygon%3E %3Cpath d='M9,14.5 L9,27.5' id='Line' stroke-width='4' stroke-linecap='square'%3E%3C/path%3E %3C/g%3E %3C/g%3E %3C/g%3E %3C/svg%3E\""
+
+/***/ },
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -721,16 +727,16 @@
 
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(8);
+	var content = __webpack_require__(9);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(6)(content, {});
+	var update = __webpack_require__(7)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -747,7 +753,7 @@
 	}
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(5)();
