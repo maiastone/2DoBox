@@ -22,13 +22,8 @@
   "homepage": "https://github.com/maiastone/2DoBox#readme",
   "devDependencies": {
     "chai": "^3.5.0",
-    "css-loader": "^0.25.0",
     "mocha": "^3.1.0",
     "mocha-loader": "^1.0.0",
-    "node-sass": "^3.10.1",
-    "sass-loader": "^4.0.2",
-    "style-loader": "^0.13.1",
-    "svg-url-loader": "^1.1.0",
     "wdio-mocha-framework": "^0.4.3",
     "webdriverio": "^4.2.16",
     "webpack": "^1.13.2",
