@@ -50,12 +50,11 @@ ul {
 
 .importance-level {
   color: #6d6e71;
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .vote {
   border: none;
-  margin: 3px;
 }
 
 .importance-level {
@@ -86,17 +85,14 @@ ul {
   height: 25px;
 }
 
-.ideas {
-
-}
-
-#search {
+#search, #save {
   width: 60%;
-  height: 25px;
+  height: 30px;
 }
 
 #toggle-completed {
-  margin: 45px;
+  margin-left: 20%;
+  margin-bottom: 10px;
 }
 
 #save {
@@ -104,8 +100,6 @@ ul {
   color: #ffffff;
   font-size: 1.2em;
   outline: 0px;
-  width: 60%;
-  height: 30px;
   border: none;
   padding: 0px;
 }
@@ -118,10 +112,21 @@ ul {
   padding-bottom: 75px;
   resize: none;
   -webkit-appearance: textfield;
+  height: 35px;
 }
 
 .up-vote, .down-vote, #title, #body, #search {
   outline: 0;
+}
+
+.task-complete {
+  background-color: white;
+
+}
+
+#card-buttons {
+  display: flex;
+  justify-content: flex-end;
 }
 
 #box {
@@ -139,23 +144,28 @@ ul {
   outline: none;
 }
 
-.card-delete, .up-vote, .down-vote {
-  background-image: url('../images/button-sprite.png');
-  height: 16px;
-  width: 16px;
-}
 
 .card-delete {
-  background: url('../images/button-sprite.png') 0px 0px;
-  outline: 0;
+  background: url('../images/buttons-sprite.svg') -6px -6px no-repeat;
+  width: 30px;
+  height: 30px;
+  border: none;
+
+
 }
 
 .up-vote {
-  background: url('../images/button-sprite.png') 0px -36px;
+  background: url('../images/buttons-sprite.svg') no-repeat -38px 0px;
+  width: 20px;
+  height: 38px;
+
 }
 
 .down-vote {
-  background-position: -40px -36px;
+  background: url('../images/buttons-sprite.svg') no-repeat 0px -35px;
+  width: 20px;
+  height: 38px;
+  margin-left: 10px;
 }
 
 .task-complete {
@@ -169,11 +179,13 @@ ul {
 @media screen and (min-width: 300px) {
   li {
     padding: 2px 0 2px 5px;
+
   }
 }
 
 @media screen and (min-width: 600px) {
   #body {
     padding: 0px 2px 0px 2px;
+    height: 50px;
   }
 }
