@@ -19,6 +19,7 @@ describe('on save', function(){
 
     browser.click('#save')
 
+
     assert.equal(taskTitle.getValue(), "")
     assert.equal(taskBody.getValue(), "")
   });
@@ -35,8 +36,12 @@ describe('on save', function(){
 
     var taskList = browser.element('#task-list')
 
-    asserts.include( taskList.getText(), taskTitle.getValue())
-    asserts.include( taskList.getText(), taskBody.getValue())
+    var titleTextList = taskList.elements('li').elements('.card-title').getText()
+    var bodyTextList = taskList.elements('li').elements('.card-body').getText()
+
+
+    assert.equal(titleTextList[0], 'this is a title');
+    assert.equal(bodyTextList[0], 'this is a body');
   });
 
   it('should add the task to the page, check validity, refresh page, check validity', function(){
