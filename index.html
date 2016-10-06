@@ -2,8 +2,6 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="lib/reset.css"/>
-    <link rel="stylesheet" type="text/css" href="lib/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=true;">
     <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
@@ -21,18 +19,26 @@
     </header>
     <section class="ideas">
         <input type="text" aria-label = "search input field" id="search" placeholder="Search"></input>
-        <section id='#filter-buttons'>
+
+        <section id="button-container"
           <h4>Filter by Importance</h4>
-          <button class='filter-button' id='filt-critical'>Critical</button>
-          <button class='filter-button' id='filt-high'>High</button>
-          <button class='filter-button' id='filt-normal'>Normal</button>
-          <button class='filter-button' id='filt-low'>Low</button>
-          <button class='filter-button' id='filt-none'>None</button>
+          <section id='filter-buttons'>
+            <button class='filter-button' id='filt-critical'>Critical</button>
+            <button class='filter-button' id='filt-high'>High</button>
+            <button class='filter-button' id='filt-normal'>Normal</button>
+            <button class='filter-button' id='filt-low'>Low</button>
+            <button class='filter-button' id='filt-none'>None</button>
+          </section>
+          <button id="toggle-completed">Show Completed Tasks</button>
+        </section>
+
         <section>
-        <button id="toggle-completed">Show Completed Tasks</button>
         <ul id="task-list"></ul>
         <button id="show-more-tasks">Show More...</button>
-    </section>
+        </section>
+
+      </section>
+
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       <script src="main.bundle.js"></script>
   </body>
