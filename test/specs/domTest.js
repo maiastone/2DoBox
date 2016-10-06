@@ -19,7 +19,6 @@ describe('on save', function(){
 
     browser.click('#save')
 
-
     assert.equal(taskTitle.getValue(), "")
     assert.equal(taskBody.getValue(), "")
   });
