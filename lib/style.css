@@ -114,6 +114,10 @@ ul {
   background-color: #54C7FC;
 }
 
+#save:disabled {
+  background-color: gray;
+}
+
 #body {
   padding-bottom: 75px;
   resize: none;
