@@ -8,7 +8,7 @@ $button-font-color: #ffffff;
 $font-size-small: 9px;
 $button-background-color: #2B5994;
 $button-border: 1px solid black;
-// $hover-state-color:
+// $hover-state-color: #1C3A61;
 
 @mixin pill-button {
   border-radius: $button-border-radius;
@@ -24,7 +24,7 @@ $button-border: 1px solid black;
 }
 
 .card-delete {
-  background: url('../images/buttons-sprite.svg') -10px -10px no-repeat;
+  background: url('../images/buttons-sprite-with-hover.svg') -10px -10px no-repeat;
   width: $large-button-width;
   height: $button-field-height;
   border-radius: 0;
@@ -32,17 +32,27 @@ $button-border: 1px solid black;
   margin: 2px;
 }
 
+.card-delete:hover {
+  background: url('../images/buttons-sprite-with-hover.svg') -90px -1.5px no-repeat;
+}
+
 .up-vote {
-  background: url('../images/buttons-sprite.svg') no-repeat -38px 0px;
+  background: url('../images/buttons-sprite-with-hover.svg') no-repeat -38px 0px;
   width: $main-button-width;
   height: $tall-button-height;
 }
+.up-vote:hover {
+  background: url('../images/buttons-sprite-with-hover.svg') no-repeat -128px 0px;
+}
 
 .down-vote {
-  background: url('../images/buttons-sprite.svg') no-repeat 0px -35px;
+  background: url('../images/buttons-sprite-with-hover.svg') no-repeat 0px -35px;
   width: $main-button-width;
   height: $tall-button-height;
   margin-left: 10px;
+}
+.down-vote:hover {
+  background: url('../images/buttons-sprite-with-hover.svg') no-repeat -90px -35px;
 }
 
 #toggle-completed {
@@ -74,16 +84,20 @@ $button-border: 1px solid black;
 
 #show-more-tasks:focus {
   @include pill-button;
+  height: $button-field-height;
+  margin: 2% 0 2% 15%;
+  width: $extra-large-button-width;
 }
 
-#show-more-tasks:hover, #save:hover, #save:focus {
-  background-color: darkgray;
+#show-more-tasks:hover, #save:hover, #save:focus, .filter-button:hover, #toggle-completed:hover, .task-complete:hover {
+  background-color: darken(#2B5994, 15%);
 }
 
 #save {
   background-color: #2B5994;
   color: #ffffff;
   font-size: 1.2em;
+  outline: 0;
 }
 
 #save:disabled {
