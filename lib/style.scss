@@ -14,11 +14,13 @@ h1 {
   text-align: center;
   letter-spacing: .5px;
   padding-top: 10px;
+
+  #box {
+    color: #2B5994;
+  }
 }
 
-#box {
-  color: #2B5994;
-}
+
 
 h2 {
   color: #2B5994;
@@ -34,17 +36,20 @@ p {
   color: #939598;
 }
 
-li {
-  border-bottom: 3px solid #d1d3d4;
 
-}
 
 ul {
   list-style: none;
   width: 70%;
   margin: auto;
   padding-top: 15px;
+
+  li {
+    border-bottom: 3px solid #d1d3d4;
+
+  }
 }
+
 
 button{
   color: #ffffff;
