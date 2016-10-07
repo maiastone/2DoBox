@@ -1,0 +1,91 @@
+$main-button-width: 20px;
+$large-button-width: 25px;
+$extra-large-button-width: 100px;
+$button-border-radius: 7px;
+$button-field-height: 25px;
+$tall-button-height: 38px;
+$button-font-color: #ffffff;
+$font-size-small: 9px;
+$button-background-color: #2B5994;
+$button-border: 1px solid black;
+// $hover-state-color:
+
+@mixin pill-button {
+  border-radius: $button-border-radius;
+  width: $main-button-width;
+  height: $button-field-height;
+  color: $button-font-color;
+  background-color: $button-background-color;
+  border: $button-border;
+  text-align: center;
+  padding: 0px;
+  border: none;
+  outline: 0;
+}
+
+.card-delete {
+  background: url('../images/buttons-sprite.svg') -10px -10px no-repeat;
+  width: $large-button-width;
+  height: $button-field-height;
+  border-radius: 0;
+  border: none;
+  margin: 2px;
+}
+
+.up-vote {
+  background: url('../images/buttons-sprite.svg') no-repeat -38px 0px;
+  width: $main-button-width;
+  height: $tall-button-height;
+}
+
+.down-vote {
+  background: url('../images/buttons-sprite.svg') no-repeat 0px -35px;
+  width: $main-button-width;
+  height: $tall-button-height;
+  margin-left: 10px;
+}
+
+#toggle-completed {
+  @include pill-button;
+  width: $extra-large-button-width;
+  height: 50px;
+}
+
+.filter-button {
+  @include pill-button;
+  width: 50px;
+  height: $button-field-height;
+  margin: 3px;
+}
+
+.task-complete {
+  @include pill-button;
+  width: 60px;
+  height: $button-field-height;
+  font-size: $font-size-small;
+}
+
+#show-more-tasks {
+  @include pill-button;
+  height: $button-field-height;
+  margin: 2% 0 2% 15%;
+  width: $extra-large-button-width;
+}
+
+#show-more-tasks:focus {
+  @include pill-button;
+}
+
+#show-more-tasks:hover, #save:hover, #save:focus {
+  background-color: darkgray;
+}
+
+#save {
+  background-color: #2B5994;
+  color: #ffffff;
+  font-size: 1.2em;
+}
+
+#save:disabled {
+  background-color: gray;
+}
