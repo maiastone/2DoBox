@@ -8,7 +8,7 @@ $button-font-color: #ffffff;
 $font-size-small: 9px;
 $button-background-color: #2B5994;
 $button-border: 1px solid black;
-// $hover-state-color:
+// $hover-state-color: #1C3A61;
 
 @mixin pill-button {
   border-radius: $button-border-radius;
@@ -89,7 +89,7 @@ $button-border: 1px solid black;
   width: $extra-large-button-width;
 }
 
-#show-more-tasks:hover, #save:hover, #save:focus {
+#show-more-tasks:hover, #save:hover, #save:focus, .filter-button:hover, #toggle-completed:hover, .task-complete:hover {
   background-color: darken(#2B5994, 15%);
 }
 
