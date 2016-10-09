@@ -1,6 +1,6 @@
 const assert = require('chai').assert;
 const Task = require('../lib/task.js')
-require('../lib/2Do.js')
+const ToDoList = require('../lib/2Do.js')
 
 describe('Task Object Unit Tests', function(){
   var task = new Task();
@@ -43,5 +43,26 @@ describe('Task Object Unit Tests', function(){
 
 describe('2DoBox unit tests',function(){
 
+  localStorage.clear();
+  toDoList = ToDoList;
+  console.log(toDoList.taskArray.length)
+
+  toDoList.taskArray = [];
+
+
+  it('ToDoList.add should add a new task to the list', function(){
+
+    assert.equal(toDoList.taskArray.length, 0)
+    toDoList.addTask('title', 'body')
+    assert.equal(toDoList.taskArray.length, 1)
+    assert.equal(toDoList.taskArray[0].title, 'title')
+    assert.equal(toDoList.taskArray[0].body, 'body')
+  })
+
+  it('ToDoList.removeTask should remove a task from the list', function(){
+    var startCount = toDoList.taskArray.length
+    toDoList.removeTask(toDoList.taskArray[0].id)
+    assert.equal(toDoList.taskArray.length, startCount - 1);
+  })
 
 })
