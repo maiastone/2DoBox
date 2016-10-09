@@ -53,11 +53,6 @@ ul {
   }
 }
 
-#body-char-count {
-  
-}
-
-
 // input fields
 .input {
   background-color: #35B192;
@@ -107,7 +102,10 @@ ul {
   opacity: 0.2;
 }
 
-#body-char-count {
+#body-char{
+  text-align: center;
+  color: white;
+  display: block;
   text-align: center;
 }
 
