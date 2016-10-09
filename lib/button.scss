@@ -8,19 +8,19 @@ $button-font-color: #ffffff;
 $font-size-small: 9px;
 $button-background-color: #2B5994;
 $button-border: 1px solid black;
-// $hover-state-color: #1C3A61;
 
 @mixin pill-button {
-  border-radius: $button-border-radius;
   width: $main-button-width;
   height: $button-field-height;
+  border-radius: $button-border-radius;
   color: $button-font-color;
   background-color: $button-background-color;
   border: $button-border;
   text-align: center;
-  padding: 0px;
   border: none;
   outline: 0;
+  padding: 0px;
+  font-family: 'Questrial', sans-serif;
 }
 
 .card-delete {
@@ -41,6 +41,7 @@ $button-border: 1px solid black;
   width: $main-button-width;
   height: $tall-button-height;
 }
+
 .up-vote:hover {
   background: url('../images/buttons-sprite-with-hover.svg') no-repeat -128px 0px;
 }
@@ -51,6 +52,7 @@ $button-border: 1px solid black;
   height: $tall-button-height;
   margin-left: 10px;
 }
+
 .down-vote:hover {
   background: url('../images/buttons-sprite-with-hover.svg') no-repeat -90px -35px;
 }

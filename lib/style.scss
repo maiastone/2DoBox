@@ -120,8 +120,6 @@ ul {
   display: flex;
 }
 
-
-
 #button-container {
   @include flexbox();
   justify-content: space-between;
@@ -156,7 +154,6 @@ ul {
 }
 
 
-
 ::-webkit-input-placeholder {
   font-size: 1.1em;
   letter-spacing: 1px;
@@ -173,7 +170,6 @@ ul {
   li {
     padding: 2px 0 2px 5px;
   }
-
 }
 
 @media screen and (min-width: 600px) {
@@ -181,6 +177,7 @@ ul {
     padding: 0px 2px 0px 2px;
     height: 50px;
   }
+
   #filter-buttons {
     @include flexbox();
     justify-content:flex-start;
@@ -189,7 +186,6 @@ ul {
 
   }
   .filter-button {
-
     padding: 2px;
   }
 }
