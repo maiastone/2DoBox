@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=true;">
@@ -7,17 +7,21 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <title>2DoList</title>
   </head>
+
   <body>
     <header class="input">
-        <h1>2Do<span id="box">List</span></h1>
+        <h1>2Do<span id="box"> List</span></h1>
         <form>
-          <input type="text" aria-label="title input field" id="title" placeholder="Title"></input>
+          <input id="title" type="text" aria-label="title input field" placeholder="Title"></input>
           <textarea id="body" aria-label="body input field" placeholder="Body"></textarea>
-          <span id='body-char'>Chacter Count: <span id='body-char-count'>0</span></span>
+            <p class='body-char'>Current Chacter Count:
+              <span id='body-char-count'>0</span>
+            out of 120</p>
           <button type="submit" tabindex="0" id="save">save</button>
         </form>
     </header>
-    <section class="ideas">
+
+    <section id="list">
         <input type="text" aria-label = "search input field" id="search" placeholder="Search"></input>
 
         <section id="button-container"
@@ -37,7 +41,7 @@
         <button id="show-more-tasks">Show More...</button>
         </section>
 
-      </section>
+    </section>
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       <script src="main.bundle.js"></script>

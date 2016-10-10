@@ -4,11 +4,6 @@ $main-width: 60%;
   box-sizing: border-box;
 }
 
-.up-vote, .down-vote, #title, #body, #search {
-  outline: 0;
-}
-
-
 body {
   font-family: 'Questrial', sans-serif;
   letter-spacing: extended;
@@ -16,14 +11,14 @@ body {
 
 h1 {
   font-family: 'Oswald', sans-serif;
-  color: #FFBB4C;
+  color: darken(#2B5994, 25%);
   font-size: 24px;
   text-align: center;
   letter-spacing: .5px;
   padding-top: 10px;
 
   #box {
-    color: #2B5994;
+    color: darken(#2B5994, 25%);
   }
 }
 
@@ -49,20 +44,45 @@ ul {
 
   li {
     border-bottom: 3px solid #d1d3d4;
-
   }
 }
 
-// input fields
 .input {
   background-color: #35B192;
   padding-bottom: 10px;
 }
 
 .card-body {
+  color: darken(#6d6e71, 15%);
   padding: 10px 0;
   line-height: 1.2em;
   font-stretch: expanded;
+}
+
+.vote {
+  border: none;
+}
+
+.importance-level {
+  color: #6d6e71;
+  font-size: 14px;
+  margin: 10px 0px 0px 8px;
+}
+
+.completed {
+  opacity: 0.2;
+}
+
+.body-char {
+  padding: 2px;
+  text-align: center;
+  color: #481f61;
+  display: block;
+  font-size: .75em;
+}
+
+.up-vote, .down-vote, #title, #body, #search {
+  outline: 0;
 }
 
 #title, #body, #save, #search {
@@ -88,30 +108,7 @@ ul {
   height: 30px;
 }
 
-.vote {
-  border: none;
-}
-
-.importance-level {
-  color: #6d6e71;
-  font-size: 14px;
-  margin: 10px 0px 0px 8px;
-}
-
-.completed{
-  opacity: 0.2;
-}
-
-#body-char{
-  text-align: center;
-  color: white;
-  display: block;
-  text-align: center;
-}
-
-
 // flex containers
-
 @mixin flexbox() {
   display: -webkit-box;
   display: -moz-box;
@@ -119,8 +116,6 @@ ul {
   display: -webkit-flex;
   display: flex;
 }
-
-
 
 #button-container {
   @include flexbox();
@@ -156,7 +151,6 @@ ul {
 }
 
 
-
 ::-webkit-input-placeholder {
   font-size: 1.1em;
   letter-spacing: 1px;
@@ -173,7 +167,6 @@ ul {
   li {
     padding: 2px 0 2px 5px;
   }
-
 }
 
 @media screen and (min-width: 600px) {
@@ -181,15 +174,14 @@ ul {
     padding: 0px 2px 0px 2px;
     height: 50px;
   }
+
   #filter-buttons {
     @include flexbox();
     justify-content:flex-start;
     margin-right: 20px;
     width: $main-width;
-
   }
   .filter-button {
-
     padding: 2px;
   }
 }

@@ -44,9 +44,10 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(1)
-	__webpack_require__(6)
-	__webpack_require__ (8);
+	__webpack_require__(1);
+	__webpack_require__(5);
+	__webpack_require__(7);
+	__webpack_require__ (10);
 
 
 /***/ },
@@ -59,14 +60,14 @@
 	var content = __webpack_require__(2);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(5)(content, {});
+	var update = __webpack_require__(4)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./style.scss", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./style.scss");
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./reset.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./reset.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -84,7 +85,7 @@
 
 
 	// module
-	exports.push([module.id, "* {\n  box-sizing: border-box; }\n\nbody {\n  font-family: 'Questrial', sans-serif;\n  letter-spacing: extended; }\n\nh1 {\n  font-family: 'Oswald', sans-serif;\n  color: #0076FF;\n  font-size: 24px;\n  text-align: center;\n  letter-spacing: .5px;\n  padding-top: 10px; }\n\nh2 {\n  font-family: 'Roboto Slab', serif;\n  color: #6d6e71;\n  font-size: 20px;\n  padding-top: 10px; }\n\np {\n  color: #939598; }\n\nli {\n  border-bottom: 3px solid #d1d3d4;\n  width: 75%;\n  margin: 0 auto; }\n\nul {\n  list-style: none; }\n\n.input {\n  background-color: #C7C7CD;\n  padding-bottom: 10px; }\n\n.card-body {\n  padding: 10px 0;\n  line-height: 1.2em;\n  font-stretch: expanded; }\n\n.importance-level {\n  color: #6d6e71;\n  font-size: 14px; }\n\n.vote {\n  border: none; }\n\n.importance-level {\n  color: #6d6e71;\n  font-size: 12px;\n  margin: 8px 0px 0px 8px; }\n\n.card-header {\n  display: flex;\n  justify-content: space-between;\n  margin-top: 15px; }\n\n.card-footer {\n  display: flex;\n  margin-bottom: 5px; }\n\n#title, #body, #save, #search {\n  display: block;\n  margin: 10px auto;\n  width: 60%;\n  border: 1px solid #BFC3C4; }\n\n#title {\n  height: 25px; }\n\n#search, #save {\n  width: 60%;\n  height: 30px; }\n\n#toggle-completed {\n  margin-left: 20%;\n  margin-bottom: 10px; }\n\n#save {\n  background-color: #0076FF;\n  color: #ffffff;\n  font-size: 1.2em;\n  outline: 0px;\n  border: none;\n  padding: 0px; }\n\n#save:hover, #save:focus {\n  background-color: #54C7FC; }\n\n#save:disabled {\n  background-color: gray; }\n\n#body {\n  padding-bottom: 75px;\n  resize: none;\n  -webkit-appearance: textfield;\n  height: 35px; }\n\n.up-vote, .down-vote, #title, #body, #search {\n  outline: 0; }\n\n.task-complete {\n  background-color: white; }\n\n#card-buttons {\n  display: flex;\n  justify-content: flex-end; }\n\n#box {\n  color: #6d6e71; }\n\n::-webkit-input-placeholder {\n  font-size: 1.1em;\n  letter-spacing: 1px;\n  padding-left: 3px; }\n\n[contenteditable=\"true\"]:active, [contenteditable=\"true\"]:focus {\n  border: none;\n  outline: none; }\n\n.card-delete {\n  background: url(" + __webpack_require__(4) + ") -6px -6px no-repeat;\n  width: 30px;\n  height: 30px;\n  border: none; }\n\n.up-vote {\n  background: url(" + __webpack_require__(4) + ") no-repeat -38px 0px;\n  width: 20px;\n  height: 38px; }\n\n.down-vote {\n  background: url(" + __webpack_require__(4) + ") no-repeat 0px -35px;\n  width: 20px;\n  height: 38px;\n  margin-left: 10px; }\n\n.task-complete {\n  width: auto; }\n\n.completed {\n  opacity: 0.1; }\n\n@media screen and (min-width: 300px) {\n  li {\n    padding: 2px 0 2px 5px; } }\n\n@media screen and (min-width: 600px) {\n  #body {\n    padding: 0px 2px 0px 2px;\n    height: 50px; } }\n", ""]);
+	exports.push([module.id, "/* http://meyerweb.com/eric/tools/css/reset/\n   v2.0 | 20110126\n   License: none (public domain)\n*/\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\nol, ul {\n\tlist-style: none;\n}\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n", ""]);
 
 	// exports
 
@@ -147,12 +148,6 @@
 
 /***/ },
 /* 4 */
-/***/ function(module, exports) {
-
-	module.exports = "\"data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8' standalone='no'?%3E %3Csvg width='58px' height='66px' viewBox='0 0 58 66' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E %3C!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch --%3E %3Ctitle%3EGroup%3C/title%3E %3Cdesc%3ECreated with Sketch.%3C/desc%3E %3Cdefs%3E%3C/defs%3E %3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E %3Cg id='Group' transform='translate(1.000000, 0.000000)'%3E %3Cg id='Cell-Elements/Delete-Reveal'%3E %3Crect id='Cell-Frame' x='0' y='0' width='54' height='44'%3E%3C/rect%3E %3Cg id='Float' stroke-width='1' fill-rule='evenodd' transform='translate(12.000000, 12.000000)'%3E %3Cellipse id='Circle' fill='%23FE3824' cx='11' cy='11' rx='11' ry='11'%3E%3C/ellipse%3E %3Crect id='Dash' fill='%23FFFFFF' x='5.5' y='10.5' width='11' height='1'%3E%3C/rect%3E %3C/g%3E %3C/g%3E %3Cg id='Group-2' transform='translate(38.000000, 0.000000)' stroke='%23FF9600'%3E %3Cpolygon id='Triangle' fill='%23FF9600' points='9 0 18 15 0 15'%3E%3C/polygon%3E %3Cpath d='M9,14.5 L9,27.5' id='Line' stroke-width='4' stroke-linecap='square'%3E%3C/path%3E %3C/g%3E %3Cg id='Group-Copy-2' transform='translate(9.000000, 52.000000) scale(1, -1) translate(-9.000000, -52.000000) translate(0.000000, 38.000000)' stroke='%23FF9600'%3E %3Cpolygon id='Triangle' fill='%23FF9600' points='9 0 18 15 0 15'%3E%3C/polygon%3E %3Cpath d='M9,14.5 L9,27.5' id='Line' stroke-width='4' stroke-linecap='square'%3E%3C/path%3E %3C/g%3E %3C/g%3E %3C/g%3E %3C/svg%3E\""
-
-/***/ },
-/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -404,23 +399,23 @@
 
 
 /***/ },
-/* 6 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(7);
+	var content = __webpack_require__(6);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(5)(content, {});
+	var update = __webpack_require__(4)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js!./reset.css", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js!./reset.css");
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./style.scss", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./style.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -430,7 +425,7 @@
 	}
 
 /***/ },
-/* 7 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
@@ -438,21 +433,69 @@
 
 
 	// module
-	exports.push([module.id, "/* http://meyerweb.com/eric/tools/css/reset/\n   v2.0 | 20110126\n   License: none (public domain)\n*/\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\nol, ul {\n\tlist-style: none;\n}\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n", ""]);
+	exports.push([module.id, "* {\n  box-sizing: border-box; }\n\n.up-vote, .down-vote, #title, #body, #search {\n  outline: 0; }\n\nbody {\n  font-family: 'Questrial', sans-serif;\n  letter-spacing: extended; }\n\nh1 {\n  font-family: 'Oswald', sans-serif;\n  color: #55102c;\n  font-size: 24px;\n  text-align: center;\n  letter-spacing: .5px;\n  padding-top: 10px; }\n  h1 #box {\n    color: #152c4b; }\n\nh2 {\n  color: #2B5994;\n  font-size: 20px;\n  padding-top: 10px; }\n\nh4 {\n  text-align: center; }\n\np {\n  color: #939598; }\n\nul {\n  list-style: none;\n  width: 70%;\n  margin: auto;\n  padding-top: 15px; }\n  ul li {\n    border-bottom: 3px solid #d1d3d4; }\n\n.input {\n  background-color: #55ccae;\n  padding-bottom: 10px; }\n\n.card-body {\n  padding: 10px 0;\n  line-height: 1.2em;\n  font-stretch: expanded; }\n\n#title, #body, #save, #search {\n  display: block;\n  margin: 10px auto;\n  width: 60%;\n  border: 1px solid #BFC3C4; }\n\n#title {\n  height: 25px; }\n\n#body {\n  padding-bottom: 75px;\n  resize: none;\n  -webkit-appearance: textfield;\n  height: 35px; }\n\n#search, #save {\n  width: 60%;\n  height: 30px; }\n\n.vote {\n  border: none; }\n\n.importance-level {\n  color: #6d6e71;\n  font-size: 14px;\n  margin: 10px 0px 0px 8px; }\n\n.completed {\n  opacity: 0.2; }\n\n.body-char {\n  padding: 2px;\n  text-align: center;\n  color: #481f61;\n  display: block;\n  font-size: .75em; }\n\n#button-container {\n  display: -webkit-box;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: -webkit-flex;\n  display: flex;\n  justify-content: space-between;\n  width: 60%;\n  margin: auto;\n  padding-top: 10px; }\n\n#filter-buttons {\n  display: inline-block; }\n\n.card-header {\n  display: -webkit-box;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: -webkit-flex;\n  display: flex;\n  vertical-align: baseline; }\n  .card-header .card-buttons {\n    display: -webkit-box;\n    display: -moz-box;\n    display: -ms-flexbox;\n    display: -webkit-flex;\n    display: flex;\n    justify-content: flex-end;\n    margin-top: 15px;\n    width: 75%; }\n  .card-header .card-title {\n    width: 25%; }\n\n.card-footer {\n  display: -webkit-box;\n  display: -moz-box;\n  display: -ms-flexbox;\n  display: -webkit-flex;\n  display: flex;\n  margin-bottom: 5px; }\n\n::-webkit-input-placeholder {\n  font-size: 1.1em;\n  letter-spacing: 1px;\n  padding-left: 3px; }\n\n[contenteditable=\"true\"]:active, [contenteditable=\"true\"]:focus {\n  border: none;\n  outline: none; }\n\n@media screen and (min-width: 300px) {\n  li {\n    padding: 2px 0 2px 5px; } }\n\n@media screen and (min-width: 600px) {\n  #body {\n    padding: 0px 2px 0px 2px;\n    height: 50px; }\n  #filter-buttons {\n    display: -webkit-box;\n    display: -moz-box;\n    display: -ms-flexbox;\n    display: -webkit-flex;\n    display: flex;\n    justify-content: flex-start;\n    margin-right: 20px;\n    width: 60%; }\n  .filter-button {\n    padding: 2px; } }\n", ""]);
 
 	// exports
 
 
 /***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(8);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./button.scss", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./button.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	const Task = __webpack_require__(9);
-	const taskHTMLTemplate = __webpack_require__(10);
+	exports = module.exports = __webpack_require__(3)();
+	// imports
 
+
+	// module
+	exports.push([module.id, ".card-delete {\n  background: url(" + __webpack_require__(9) + ") -10px -10px no-repeat;\n  width: 25px;\n  height: 25px;\n  border-radius: 0;\n  border: none;\n  margin: 2px;\n  padding: 2px; }\n\n.card-delete:hover, .card-delete:focus {\n  background: url(" + __webpack_require__(9) + ") -90.5px -1.5px no-repeat; }\n\n.up-vote {\n  background: url(" + __webpack_require__(9) + ") no-repeat -38px 0px;\n  width: 20px;\n  height: 38px; }\n\n.up-vote:hover, .up-vote:focus {\n  background: url(" + __webpack_require__(9) + ") no-repeat -128px 0px; }\n\n.down-vote {\n  background: url(" + __webpack_require__(9) + ") no-repeat 0px -35px;\n  width: 20px;\n  height: 38px;\n  margin-left: 10px; }\n\n.down-vote:hover, .down-vote:focus {\n  background: url(" + __webpack_require__(9) + ") no-repeat -90px -35px; }\n\n#toggle-completed {\n  width: 20px;\n  height: 25px;\n  border-radius: 7px;\n  color: #ffffff;\n  background-color: #152c4b;\n  border: 1px solid black;\n  text-align: center;\n  border: none;\n  outline: 0;\n  padding: 0px;\n  font-family: 'Questrial', sans-serif;\n  width: 100px;\n  height: 50px; }\n\n.filter-button {\n  width: 20px;\n  height: 25px;\n  border-radius: 7px;\n  color: #ffffff;\n  background-color: #152c4b;\n  border: 1px solid black;\n  text-align: center;\n  border: none;\n  outline: 0;\n  padding: 0px;\n  font-family: 'Questrial', sans-serif;\n  width: 50px;\n  height: 25px;\n  margin: 3px; }\n\n.task-complete {\n  width: 20px;\n  height: 25px;\n  border-radius: 7px;\n  color: #ffffff;\n  background-color: #152c4b;\n  border: 1px solid black;\n  text-align: center;\n  border: none;\n  outline: 0;\n  padding: 0px;\n  font-family: 'Questrial', sans-serif;\n  width: 60px;\n  height: 25px;\n  font-size: 9px;\n  margin: 2px; }\n\n#show-more-tasks {\n  width: 20px;\n  height: 25px;\n  border-radius: 7px;\n  color: #ffffff;\n  background-color: #152c4b;\n  border: 1px solid black;\n  text-align: center;\n  border: none;\n  outline: 0;\n  padding: 0px;\n  font-family: 'Questrial', sans-serif;\n  height: 25px;\n  margin: 2% 0 2% 15%;\n  width: 100px; }\n\n#show-more-tasks:focus {\n  width: 20px;\n  height: 25px;\n  border-radius: 7px;\n  color: #ffffff;\n  background-color: #152c4b;\n  border: 1px solid black;\n  text-align: center;\n  border: none;\n  outline: 0;\n  padding: 0px;\n  font-family: 'Questrial', sans-serif;\n  height: 25px;\n  margin: 2% 0 2% 15%;\n  width: 100px; }\n\n#show-more-tasks:hover, #show-more-tasks:focus,\n#save:hover, #save:focus,\n#toggle-completed:hover, #toggle-completed:focus,\n.filter-button:hover, .filter-button:focus,\n.task-complete:hover, .task-complete:focus {\n  background-color: #1a3559; }\n\n#save {\n  background-color: #2B5994;\n  color: #ffffff;\n  font-size: 1.2em;\n  outline: 0; }\n\n#save:disabled {\n  background-color: gray; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	module.exports = "\"data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8' standalone='no'?%3E %3Csvg width='148px' height='66px' viewBox='0 0 148 66' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E %3C!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch --%3E %3Ctitle%3EGroup 4%3C/title%3E %3Cdesc%3ECreated with Sketch.%3C/desc%3E %3Cdefs%3E %3Cpolygon id='path-1' points='9 0 18 15 0 15'%3E%3C/polygon%3E %3C/defs%3E %3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E %3Cg id='Group-4' transform='translate(1.000000, 0.000000)'%3E %3Cg id='Group'%3E %3Cg id='Cell-Elements/Delete-Reveal'%3E %3Crect id='Cell-Frame' x='0' y='0' width='54' height='44'%3E%3C/rect%3E %3Cg id='Float' style='mix-blend-mode: darken;' stroke-width='1' fill-rule='evenodd' transform='translate(12.000000, 12.000000)'%3E %3Cellipse id='Circle' fill='%23FE3824' cx='11' cy='11' rx='11' ry='11'%3E%3C/ellipse%3E %3Crect id='Dash' fill='%23FFFFFF' x='5.5' y='10.5' width='11' height='1'%3E%3C/rect%3E %3C/g%3E %3C/g%3E %3Cg id='Group-3' transform='translate(38.000000, 0.000000)' stroke='%23FFBB4C'%3E %3Cg id='Group-2'%3E %3Cpolygon id='Triangle' fill='%23FFBB4C' points='9 0 18 15 0 15'%3E%3C/polygon%3E %3Cpath d='M9,14.5 L9,27.5' id='Line' stroke-width='4' stroke-linecap='square'%3E%3C/path%3E %3C/g%3E %3C/g%3E %3Cg id='Group-Copy-2' transform='translate(9.000000, 52.000000) scale(1, -1) translate(-9.000000, -52.000000) translate(0.000000, 38.000000)' stroke='%23FFBB4C'%3E %3Cpolygon id='Triangle' fill='%23FFBB4C' points='9 0 18 15 0 15'%3E%3C/polygon%3E %3Cpath d='M9,14.5 L9,27.5' id='Line' stroke-width='4' stroke-linecap='square'%3E%3C/path%3E %3C/g%3E %3C/g%3E %3Cg id='Group' transform='translate(90.000000, 0.000000)'%3E %3Cg id='Cell-Elements/Delete-Reveal'%3E %3Crect id='Cell-Frame' x='0' y='0' width='28' height='28'%3E%3C/rect%3E %3Cg id='Float' style='mix-blend-mode: darken;' transform='translate(2.250000, 3.272727)'%3E %3Cellipse id='Circle' fill='%23CB2D1D' cx='11' cy='11' rx='11' ry='11'%3E%3C/ellipse%3E %3Crect id='Dash' fill='%23FFFFFF' x='5.5' y='10.5' width='11' height='1'%3E%3C/rect%3E %3C/g%3E %3C/g%3E %3Cg id='Group-3' transform='translate(38.000000, 0.000000)' stroke='%23CC963E'%3E %3Cg id='Group-2'%3E %3Cpolygon id='Triangle' fill='%23CC963E' points='9 0 18 15 0 15'%3E%3C/polygon%3E %3Cpath d='M9,14.5 L9,27.5' id='Line' stroke-width='4' stroke-linecap='square'%3E%3C/path%3E %3C/g%3E %3C/g%3E %3Cg id='Group-Copy-2' transform='translate(9.000000, 52.000000) scale(1, -1) translate(-9.000000, -52.000000) translate(0.000000, 38.000000)'%3E %3Cg id='Triangle' style='mix-blend-mode: hue;'%3E %3Cuse fill='%23CC963E' fill-rule='evenodd' style='mix-blend-mode: darken;' xlink:href='%23path-1'%3E%3C/use%3E %3Cuse stroke='%23CC963E' stroke-width='1' xlink:href='%23path-1'%3E%3C/use%3E %3C/g%3E %3Cpath d='M9,14.5 L9,27.5' id='Line' stroke='%23CC963E' stroke-width='4' stroke-linecap='square'%3E%3C/path%3E %3C/g%3E %3C/g%3E %3C/g%3E %3C/g%3E %3C/svg%3E\""
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	const Task = __webpack_require__(11);
+	const taskHTMLTemplate = __webpack_require__(12);
+
+	// input fields
 	var $titleInput = $('#title')
 	var $bodyInput = $('#body')
 	var $taskList = $('#task-list')
+	// buttons
 	var $save = $('#save')
 	var $search = $('#search')
 	var $showMoreTasks = $('#show-more-tasks')
@@ -465,40 +508,40 @@
 	  maxNumberOfTasksToDisplay: 10,
 
 
-	  addTask : function(title, body) {
+	  addTask: function(title, body) {
 	    var newTask = new Task (title, body);
 	    this.taskArray.unshift(newTask);
 	    this.storeTasks();
 	    return newTask;
 	  },
 
-	  toggleSaveButton: function(){
+	  toggleSaveButton: function() {
 	    $save.attr('disabled', ($titleInput.val()==='' || $bodyInput.val().length > 120 || $bodyInput.val()===''));
 	  },
 
-	  clearInputFields : function(){
+	  clearInputFields: function() {
 	    $titleInput.val('');
 	    $bodyInput.val('');
 	  },
 
-	  updateCharacterCounts: function(){
+	  updateCharacterCounts: function() {
 	    $('#body-char-count').text($bodyInput.val().length)
 	  },
 
-	  removeTask : function(id){
+	  removeTask: function(id){
 	    this.taskArray = this.taskArray.filter(function(task){
 	      return parseInt(id) !== task.id;
 	    });
 	    this.storeTasks();
 	  },
 
-	  findTaskById : function(id) {
+	  findTaskById: function(id) {
 	    return this.taskArray.find(function(task){
 	    return task.id === id;
 	    });
 	  },
 
-	  convertImportance : function (importance){
+	  convertImportance: function(importance) {
 	    switch (importance) {
 	      case 1:
 	        return 'Critical'
@@ -515,24 +558,16 @@
 	    }
 	  },
 
-	  generateTaskHTML : function(task){
+	  generateTaskHTML: function(task) {
 	    var convertedImportance = this.convertImportance(task.importance);
 	    return taskHTMLTemplate(task, convertedImportance);
 	  },
 
-	  storeTasks : function(){
+	  storeTasks: function() {
 	    localStorage.setItem('taskList', JSON.stringify(this.taskArray));
 	  },
 
-	  //Tasks.js
-
-	  // module.exports = {
-	    // all: function(key){
-
-	    // }
-	// }
-
-	  retrieveTasks : function(){
+	  retrieveTasks: function() {
 	    tasksFromStorage = JSON.parse(localStorage.getItem('taskList'));
 
 	    if(tasksFromStorage!==null){
@@ -543,29 +578,31 @@
 	    }
 	  },
 
-	  renderTaskList: function(){
+	  renderTaskList: function() {
 	    $taskList.html('');
 	    this.retrieveTasks();
 
-	    var uncompletedArray = this.taskArray.filter(function(task){
+	    var incompletedArray = this.taskArray.filter(function(task) {
 	      return task.completed === false;
 
 	    }).slice(0,this.maxNumberOfTasksToDisplay)
-	    console.log(uncompletedArray);
-	      //OR BETTER YET use a method that renders a batch of tasks
-	   //}
-	   uncompletedArray.forEach(function(task){
-	    $taskList.append(this.generateTaskHTML(task));
-	   }.bind(this));
+	  //   this.loopAndAppendTasks(incompletedArray);
+	  // },
+	  //
+	  // loopAndAppendTasks: function(incompletedArray) {
+	    incompletedArray.forEach(function(task){
+	     $taskList.append(this.generateTaskHTML(task));
+	    }.bind(this));
+
 	    this.toggleSaveButton();
 	  },
 
-	  showMoreTasks: function(){
+	  showMoreTasks: function() {
 	      this.maxNumberOfTasksToDisplay = this.maxNumberOfTasksToDisplay + 10;
 	      this.renderTaskList();
 	  },
 
-	  filterTasksByImportance: function(importance){
+	  filterTasksByImportance: function(importance) {
 	    for (var i = 0; i < this.taskArray.length; i++) {
 	      if(this.taskArray[i].importance !== importance){
 	          $taskList.children("#"+this.taskArray[i].id+"").hide();
@@ -575,15 +612,12 @@
 	    }
 	  },
 
-	  renderUncompletedTaskList(){
+	  renderIncompletedTaskList() {
 	    this.retrieveTasks();
-	    // iterates through tasks
 	    this.taskArray.forEach(function(task){
-	      //check logic
 	      if(task.completed === true){
-	        //dom manipulation per task
 	        $taskList.prepend(this.generateTaskHTML(task));
-	        $taskList.children("#"+task.id+"").children('.task-complete').text('Uncomplete Task')
+	        $taskList.children("#"+task.id+"").children('.task-complete').text('Mark Incomplete')
 	        $taskList.children("#"+task.id+"").addClass('completed');
 	      }
 	    }.bind(this));
@@ -591,7 +625,7 @@
 
 	  toggleShowCompletedTasks: function(){
 	    if(this.showCompleted === false){
-	      this.renderUncompletedTaskList();
+	      this.renderIncompletedTaskList();
 	      $('#toggle-completed').text('Hide Completed Tasks')
 	      this.showCompleted = true;
 	    }else{
@@ -601,7 +635,7 @@
 	    }
 	  },
 
-	  showOrHideTasks: function(searchString){
+	  showOrHideTasks: function(searchString) {
 	   for (var i = 0; i < this.taskArray.length; i++) {
 	     var existingTask = this.taskArray[i];
 	     if(!(this.taskArray[i].title.includes(searchString)) && !(this.taskArray[i].body.includes(searchString))){
@@ -612,7 +646,7 @@
 	    }
 	  },
 
-	  toggleTaskCompleted: function(id, ctx){
+	  toggleTaskCompleted: function(id, ctx) {
 	    if(ToDoList.findTaskById(id).completed === true){
 	      ToDoList.findTaskById(id).completed = false;
 	      ctx.closest('li').removeClass('completed');
@@ -620,7 +654,7 @@
 	    }else{
 	      ToDoList.findTaskById(id).completed = true;
 	      ctx.closest('li').addClass('completed');
-	      ctx.text('Uncomplete Task')
+	      ctx.text('Mark Incomplete')
 	    }
 	    this.storeTasks();
 	  },
@@ -630,15 +664,19 @@
 	  }
 	}
 
-	$('document').ready(function(){
+
+
+	$('document').ready(function() {
 	  ToDoList.renderTaskList();
 	});
 
 	$save.on('click', function(e) {
 	  e.preventDefault();
 	  var task = ToDoList.addTask($titleInput.val(), $bodyInput.val());
+	  debugger;
 	  $taskList.prepend(ToDoList.generateTaskHTML(task));
 	  ToDoList.clearInputFields();
+	  ToDoList.updateCharacterCounts();
 	});
 
 	$titleInput.on('keyup', function(){
@@ -717,16 +755,19 @@
 	});
 
 
+	module.exports = ToDoList;
+
+
 /***/ },
-/* 9 */
+/* 11 */
 /***/ function(module, exports) {
 
-	function Task (title, body, id, importance, completed) {
+	function Task (title, body, id = Date.now(), importance = 3, completed = false) {
 	  this.title = title;
 	  this.body = body;
-	  this.id = id || Date.now();
-	  this.importance = importance || 3 ;
-	  this.completed = completed || false;
+	  this.id = id;
+	  this.importance = importance;
+	  this.completed = completed;
 	}
 
 
@@ -737,7 +778,6 @@
 	Task.prototype.downVote = function () {
 	  this.importance < 5 ? this.importance++ : null;
 	};
-
 
 	Task.prototype.editTitle = function (newTitle) {
 	  this.title = newTitle;
@@ -752,21 +792,25 @@
 
 
 /***/ },
-/* 10 */
+/* 12 */
 /***/ function(module, exports) {
 
 	module.exports = function(task, convertedImportance){
 	  return `
 	  <li id=${task.id}>
 
-	    <header class="card-header card-buttons">
-	      <button class="task-complete" tabindex="0">Completed</button>
-	      <label for="card-delete"></label>
-	      <button class="card-delete" aria-label="delete task" tabindex="0"></button>
+	    <header class="card-header">
+
+	      <h2 class="card-title" contenteditable="true">${task.title}</h2>
+
+	      <nav class="card-buttons">
+	        <button class="task-complete" aria-label="mark complete" tabindex="0">Completed</button>
+	        <button class="card-delete" aria-label="delete task" tabindex="0"></button>
+	      </nav>
+
 	    </header>
 
 	    <main>
-	      <h2 class="card-title" contenteditable="true">${task.title}</h2>
 	      <p class="card-body" contenteditable="true">${task.body}</p>
 	    </main>
 

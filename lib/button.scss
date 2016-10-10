@@ -8,19 +8,19 @@ $button-font-color: #ffffff;
 $font-size-small: 9px;
 $button-background-color: #2B5994;
 $button-border: 1px solid black;
-// $hover-state-color: #1C3A61;
 
 @mixin pill-button {
-  border-radius: $button-border-radius;
   width: $main-button-width;
   height: $button-field-height;
+  border-radius: $button-border-radius;
   color: $button-font-color;
   background-color: $button-background-color;
   border: $button-border;
   text-align: center;
-  padding: 0px;
   border: none;
   outline: 0;
+  padding: 0px;
+  font-family: 'Questrial', sans-serif;
 }
 
 .card-delete {
@@ -30,10 +30,12 @@ $button-border: 1px solid black;
   border-radius: 0;
   border: none;
   margin: 2px;
+  padding: 2px;
 }
 
-.card-delete:hover {
-  background: url('../images/buttons-sprite-with-hover.svg') -90px -1.5px no-repeat;
+.card-delete:hover, .card-delete:focus {
+  background: url('../images/buttons-sprite-with-hover.svg') -90.5px -1.5px no-repeat;
+  outline: 0;
 }
 
 .up-vote {
@@ -41,7 +43,8 @@ $button-border: 1px solid black;
   width: $main-button-width;
   height: $tall-button-height;
 }
-.up-vote:hover {
+
+.up-vote:hover, .up-vote:focus {
   background: url('../images/buttons-sprite-with-hover.svg') no-repeat -128px 0px;
 }
 
@@ -51,14 +54,9 @@ $button-border: 1px solid black;
   height: $tall-button-height;
   margin-left: 10px;
 }
-.down-vote:hover {
-  background: url('../images/buttons-sprite-with-hover.svg') no-repeat -90px -35px;
-}
 
-#toggle-completed {
-  @include pill-button;
-  width: $extra-large-button-width;
-  height: 50px;
+.down-vote:hover, .down-vote:focus {
+  background: url('../images/buttons-sprite-with-hover.svg') no-repeat -90px -35px;
 }
 
 .filter-button {
@@ -73,6 +71,14 @@ $button-border: 1px solid black;
   width: 60px;
   height: $button-field-height;
   font-size: $font-size-small;
+  margin: 2px;
+}
+
+#toggle-completed {
+  @include pill-button;
+  width: $extra-large-button-width;
+  height: 50px;
+  padding: 4px;
 }
 
 #show-more-tasks {
@@ -89,7 +95,11 @@ $button-border: 1px solid black;
   width: $extra-large-button-width;
 }
 
-#show-more-tasks:hover, #save:hover, #save:focus, .filter-button:hover, #toggle-completed:hover, .task-complete:hover {
+#show-more-tasks:hover, #show-more-tasks:focus,
+#save:hover, #save:focus,
+#toggle-completed:hover, #toggle-completed:focus,
+.filter-button:hover, .filter-button:focus,
+.task-complete:hover, .task-complete:focus {
   background-color: darken(#2B5994, 15%);
 }
 
