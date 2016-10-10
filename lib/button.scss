@@ -6,7 +6,7 @@ $button-field-height: 25px;
 $tall-button-height: 38px;
 $button-font-color: #ffffff;
 $font-size-small: 9px;
-$button-background-color: #152c4b;
+$button-background-color: #2B5994;
 $button-border: 1px solid black;
 
 @mixin pill-button {
@@ -35,6 +35,7 @@ $button-border: 1px solid black;
 
 .card-delete:hover, .card-delete:focus {
   background: url('../images/buttons-sprite-with-hover.svg') -90.5px -1.5px no-repeat;
+  outline: 0;
 }
 
 .up-vote {

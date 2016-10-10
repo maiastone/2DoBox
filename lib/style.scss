@@ -16,14 +16,14 @@ body {
 
 h1 {
   font-family: 'Oswald', sans-serif;
-  color: #55102c;
+  color: darken(#2B5994, 25%);
   font-size: 24px;
   text-align: center;
   letter-spacing: .5px;
   padding-top: 10px;
 
   #box {
-    color: #152c4b;
+    color: darken(#2B5994, 25%);
   }
 }
 
@@ -55,11 +55,12 @@ ul {
 
 // input fields
 .input {
-  background-color: #55ccae;
+  background-color: #35B192;
   padding-bottom: 10px;
 }
 
 .card-body {
+  color: darken(#6d6e71, 15%);
   padding: 10px 0;
   line-height: 1.2em;
   font-stretch: expanded;

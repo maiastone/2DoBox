@@ -586,15 +586,15 @@
 	      return task.completed === false;
 
 	    }).slice(0,this.maxNumberOfTasksToDisplay)
-	    this.loopAndAppendTasks(incompletedArray);
-	    this.toggleSaveButton();
-	  },
-
-	  loopAndAppendTasks: function(incompletedArray) {
+	  //   this.loopAndAppendTasks(incompletedArray);
+	  // },
+	  //
+	  // loopAndAppendTasks: function(incompletedArray) {
 	    incompletedArray.forEach(function(task){
 	     $taskList.append(this.generateTaskHTML(task));
 	    }.bind(this));
 
+	    this.toggleSaveButton();
 	  },
 
 	  showMoreTasks: function() {
@@ -673,6 +673,7 @@
 	$save.on('click', function(e) {
 	  e.preventDefault();
 	  var task = ToDoList.addTask($titleInput.val(), $bodyInput.val());
+	  debugger;
 	  $taskList.prepend(ToDoList.generateTaskHTML(task));
 	  ToDoList.clearInputFields();
 	  ToDoList.updateCharacterCounts();
@@ -690,6 +691,7 @@
 	$('#toggle-completed').on('click', function(){
 	  ToDoList.toggleShowCompletedTasks();
 	});
+
 	$('#filt-critical').on('click', function(){
 	  ToDoList.filterTasksByImportance(1);
 	});
@@ -713,19 +715,19 @@
 
 	var updateImportanceText = function (ctx){
 	  ctx.siblings().children('.importance-text').text(ToDoList.convertImportance(ToDoList.findTaskById(ToDoList.getID(ctx)).importance));
-	};
+	}
 
 	$taskList.on('click', '.up-vote', function(){
 	  ToDoList.findTaskById(ToDoList.getID($(this))).upVote();
 	  ToDoList.storeTasks();
 	  updateImportanceText($(this));
-	});
+	})
 
 	$taskList.on('click', '.down-vote', function(){
 	  ToDoList.findTaskById(ToDoList.getID($(this))).downVote();
 	  ToDoList.storeTasks();
 	  updateImportanceText($(this));
-	});
+	})
 
 	$taskList.on('click', '.task-complete', function(){
 	  ToDoList.toggleTaskCompleted(ToDoList.getID($(this)),$(this));
@@ -735,18 +737,18 @@
 	  var newTitle = $(this).text()
 	  ToDoList.findTaskById(ToDoList.getID($(this))).editTitle(newTitle);
 	  ToDoList.storeTasks();
-	});
+	})
 
 	$taskList.on('blur', '.card-body', function(){
 	  var newBody = $(this).text()
 	  ToDoList.findTaskById(ToDoList.getID($(this))).editBody(newBody);
 	  ToDoList.storeTasks();
-	});
+	})
 
 	$search.on('keyup', function(){
 	  var searchString = $(this).val();
 	  ToDoList.showOrHideTasks(searchString);
-	});
+	})
 
 	$showMoreTasks.on('click', function(){
 	  ToDoList.showMoreTasks();
