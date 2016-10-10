@@ -142,7 +142,109 @@ describe('on save', function(){
     assert.equal(ideaCountAfterDelete,ideaCountBeforeDelete-2);
   });
 
+  it('adds 3 ideas to the page, changes importance, then filters by low importance', function(){
 
+    browser.url('/');
+    browser.localStorage('DELETE');
+    browser.url('/');
+    var taskTitle = browser.element('#title')
+    var taskBody = browser.element('#body')
+    var taskList = browser.element('#task-list')
+
+    taskTitle.setValue('this is title 1')
+    taskBody.setValue('this is body 1')
+    browser.click('#save')
+    taskTitle.setValue('this is title 2')
+    taskBody.setValue('this is body 2')
+    browser.click('#save')
+    taskTitle.setValue('this is title 3')
+    taskBody.setValue('this is body 3')
+    browser.click('#save')
+
+    browser.click('.down-vote')
+    var taskImportance = taskList.elements('li').elements('.importance-text').getText()
+    assert.equal(taskImportance[0], 'Low');
+
+    browser.click('#filt-low');
+
+    var visibleArrayAfterFilter = browser.isVisible('li').filter(function(visibility){
+      return visibility === true
+      }
+    );
+    assert.equal(visibleArrayAfterFilter.length,1);
+  });
+
+  it('adds two tasks to the page, clicks completed on one, checks completed status', function(){
+
+    browser.url('/');
+    browser.localStorage('DELETE');
+    browser.url('/');
+    var taskTitle = browser.element('#title')
+    var taskBody = browser.element('#body')
+    var taskList = browser.element('#task-list')
+
+    taskTitle.setValue('this is title 1')
+    taskBody.setValue('this is body 1')
+    browser.click('#save')
+    taskTitle.setValue('this is title 2')
+    taskBody.setValue('this is body 2')
+    browser.click('#save')
+
+    browser.click('.task-complete')
+
+    assert.equal(browser.isExisting('.completed'), true);
+  });
+
+  it('adds two tasks to the page, clicks completed, refreshes, makes sure completed is not shown', function(){
+
+    browser.url('/');
+    browser.localStorage('DELETE');
+    browser.url('/');
+    var taskTitle = browser.element('#title')
+    var taskBody = browser.element('#body')
+    var taskList = browser.element('#task-list')
+
+    taskTitle.setValue('this is title 1')
+    taskBody.setValue('this is body 1')
+    browser.click('#save')
+    taskTitle.setValue('this is title 2')
+    taskBody.setValue('this is body 2')
+    browser.click('#save')
+
+    browser.click('.task-complete')
+
+    browser.refresh()
+
+    assert.equal(browser.isExisting('.completed'), false);
+  });
+
+  it('adds two tasks to the page, clicks completed, refreshes, makes sure completed is not shown, press show completed, tests completed exists', function(){
+
+    browser.url('/');
+    browser.localStorage('DELETE');
+    browser.url('/');
+    var taskTitle = browser.element('#title')
+    var taskBody = browser.element('#body')
+    var taskList = browser.element('#task-list')
+
+    taskTitle.setValue('this is title 1')
+    taskBody.setValue('this is body 1')
+    browser.click('#save')
+    taskTitle.setValue('this is title 2')
+    taskBody.setValue('this is body 2')
+    browser.click('#save')
+
+    browser.click('.task-complete')
+
+    browser.refresh()
+
+    assert.equal(browser.isExisting('.completed'), false);
+
+    browser.click('#toggle-completed')
+
+    assert.equal(browser.isExisting('.completed'), true);
+
+  });
 
 
 
