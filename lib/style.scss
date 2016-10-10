@@ -1,4 +1,5 @@
 $main-width: 60%;
+$padding-standard: 10px;
 
 * {
   box-sizing: border-box;
@@ -11,21 +12,22 @@ body {
 
 h1 {
   font-family: 'Oswald', sans-serif;
-  color: darken(#2B5994, 25%);
-  font-size: 24px;
+  // color: darken(#2B5994, 25%);
+  color: #FA9E49;
+  font-size: 28px;
   text-align: center;
   letter-spacing: .5px;
-  padding-top: 10px;
+  padding-top: $padding-standard;
 
   #box {
-    color: darken(#2B5994, 25%);
+    color: #34aacf;
   }
 }
 
 h2 {
   color: #2B5994;
   font-size: 20px;
-  padding-top: 10px;
+  padding-top: $padding-standard;
 }
 
 h4 {
@@ -40,7 +42,7 @@ ul {
   list-style: none;
   width: 70%;
   margin: auto;
-  padding-top: 15px;
+  padding-top: $padding-standard;
 
   li {
     border-bottom: 3px solid #d1d3d4;
@@ -48,8 +50,8 @@ ul {
 }
 
 .input {
-  background-color: #35B192;
-  padding-bottom: 10px;
+  background-color: #490921;
+  padding-bottom: $padding-standard;
 }
 
 .card-body {
@@ -76,7 +78,7 @@ ul {
 .body-char {
   padding: 2px;
   text-align: center;
-  color: #481f61;
+  color: #34aacf;
   display: block;
   font-size: .75em;
 }
@@ -122,7 +124,7 @@ ul {
   justify-content: space-between;
   width: $main-width;
   margin: auto;
-  padding-top: 10px;
+  padding-top: $padding-standard;
 }
 
 #filter-buttons {
@@ -183,5 +185,6 @@ ul {
   }
   .filter-button {
     padding: 2px;
+    width: 15%;
   }
 }
