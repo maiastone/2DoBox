@@ -16,14 +16,14 @@ body {
 
 h1 {
   font-family: 'Oswald', sans-serif;
-  color: #FFBB4C;
+  color: #55102c;
   font-size: 24px;
   text-align: center;
   letter-spacing: .5px;
   padding-top: 10px;
 
   #box {
-    color: #2B5994;
+    color: #152c4b;
   }
 }
 
@@ -55,7 +55,7 @@ ul {
 
 // input fields
 .input {
-  background-color: #35B192;
+  background-color: #55ccae;
   padding-bottom: 10px;
 }
 
@@ -98,15 +98,16 @@ ul {
   margin: 10px 0px 0px 8px;
 }
 
-.completed{
+.completed {
   opacity: 0.2;
 }
 
-#body-char{
+.body-char {
+  padding: 2px;
   text-align: center;
-  color: white;
+  color: #481f61;
   display: block;
-  text-align: center;
+  font-size: .75em;
 }
 
 

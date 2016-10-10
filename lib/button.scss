@@ -6,7 +6,7 @@ $button-field-height: 25px;
 $tall-button-height: 38px;
 $button-font-color: #ffffff;
 $font-size-small: 9px;
-$button-background-color: #2B5994;
+$button-background-color: #152c4b;
 $button-border: 1px solid black;
 
 @mixin pill-button {
@@ -30,10 +30,11 @@ $button-border: 1px solid black;
   border-radius: 0;
   border: none;
   margin: 2px;
+  padding: 2px;
 }
 
-.card-delete:hover {
-  background: url('../images/buttons-sprite-with-hover.svg') -91px -1.5px no-repeat;
+.card-delete:hover, .card-delete:focus {
+  background: url('../images/buttons-sprite-with-hover.svg') -90.5px -1.5px no-repeat;
 }
 
 .up-vote {
@@ -42,7 +43,7 @@ $button-border: 1px solid black;
   height: $tall-button-height;
 }
 
-.up-vote:hover {
+.up-vote:hover, .up-vote:focus {
   background: url('../images/buttons-sprite-with-hover.svg') no-repeat -128px 0px;
 }
 
@@ -53,7 +54,7 @@ $button-border: 1px solid black;
   margin-left: 10px;
 }
 
-.down-vote:hover {
+.down-vote:hover, .down-vote:focus {
   background: url('../images/buttons-sprite-with-hover.svg') no-repeat -90px -35px;
 }
 
@@ -75,6 +76,7 @@ $button-border: 1px solid black;
   width: 60px;
   height: $button-field-height;
   font-size: $font-size-small;
+  margin: 2px;
 }
 
 #show-more-tasks {
@@ -91,7 +93,11 @@ $button-border: 1px solid black;
   width: $extra-large-button-width;
 }
 
-#show-more-tasks:hover, #save:hover, #save:focus, .filter-button:hover, #toggle-completed:hover, .task-complete:hover {
+#show-more-tasks:hover, #show-more-tasks:focus,
+#save:hover, #save:focus,
+#toggle-completed:hover, #toggle-completed:focus,
+.filter-button:hover, .filter-button:focus,
+.task-complete:hover, .task-complete:focus {
   background-color: darken(#2B5994, 15%);
 }
 
