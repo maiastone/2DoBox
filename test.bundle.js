@@ -171,15 +171,14 @@
 	      return task.completed === false;
 
 	    }).slice(0,this.maxNumberOfTasksToDisplay)
-	  //   this.loopAndAppendTasks(incompletedArray);
-	  // },
-	  //
-	  // loopAndAppendTasks: function(incompletedArray) {
+	    this.loopAndAppendTasks(incompletedArray);
+	    this.toggleSaveButton();
+	  },
+
+	  loopAndAppendTasks: function(incompletedArray) {
 	    incompletedArray.forEach(function(task){
 	     $taskList.append(this.generateTaskHTML(task));
 	    }.bind(this));
-
-	    this.toggleSaveButton();
 	  },
 
 	  showMoreTasks: function() {
@@ -258,7 +257,6 @@
 	$save.on('click', function(e) {
 	  e.preventDefault();
 	  var task = ToDoList.addTask($titleInput.val(), $bodyInput.val());
-	  debugger;
 	  $taskList.prepend(ToDoList.generateTaskHTML(task));
 	  ToDoList.clearInputFields();
 	  ToDoList.updateCharacterCounts();
@@ -386,10 +384,10 @@
 
 	    <header class="card-header">
 
-	      <h2 class="card-title" contenteditable="true">${task.title}</h2>
+	      <h2 class="card-title" contenteditable="true" title="task title">${task.title}</h2>
 
 	      <nav class="card-buttons">
-	        <button class="task-complete" aria-label="mark complete" tabindex="0">Completed</button>
+	        <button class="task-complete" aria-label="mark complete" tabindex="0">Complete</button>
 	        <button class="card-delete" aria-label="delete task" tabindex="0"></button>
 	      </nav>
 
