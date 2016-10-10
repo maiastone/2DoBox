@@ -5,7 +5,7 @@ $button-border-radius: 7px;
 $button-field-height: 25px;
 $tall-button-height: 38px;
 $button-font-color: #ffffff;
-$font-size-small: 9px;
+$font-size-small: 10px;
 $button-background-color: #2B5994;
 $button-border: 1px solid black;
 
@@ -30,12 +30,15 @@ $button-border: 1px solid black;
   border-radius: 0;
   border: none;
   margin: 2px;
-  padding: 2px;
+  padding: 10px;
+  outline: 0;
+
 }
 
 .card-delete:hover, .card-delete:focus {
-  background: url('../images/buttons-sprite-with-hover.svg') -90.5px -1.5px no-repeat;
-  outline: 0;
+  background: url('../images/buttons-sprite-with-hover.svg') -90.1px -1.2px no-repeat;
+  margin: 2px;
+  padding: 12px;
 }
 
 .up-vote {
@@ -61,8 +64,8 @@ $button-border: 1px solid black;
 
 .filter-button {
   @include pill-button;
-  width: 50px;
-  height: $button-field-height;
+  width: 75px;
+  height: 30px;
   margin: 3px;
 }
 
