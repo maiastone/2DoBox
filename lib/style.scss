@@ -4,11 +4,6 @@ $main-width: 60%;
   box-sizing: border-box;
 }
 
-.up-vote, .down-vote, #title, #body, #search {
-  outline: 0;
-}
-
-
 body {
   font-family: 'Questrial', sans-serif;
   letter-spacing: extended;
@@ -49,11 +44,9 @@ ul {
 
   li {
     border-bottom: 3px solid #d1d3d4;
-
   }
 }
 
-// input fields
 .input {
   background-color: #35B192;
   padding-bottom: 10px;
@@ -64,6 +57,32 @@ ul {
   padding: 10px 0;
   line-height: 1.2em;
   font-stretch: expanded;
+}
+
+.vote {
+  border: none;
+}
+
+.importance-level {
+  color: #6d6e71;
+  font-size: 14px;
+  margin: 10px 0px 0px 8px;
+}
+
+.completed {
+  opacity: 0.2;
+}
+
+.body-char {
+  padding: 2px;
+  text-align: center;
+  color: #481f61;
+  display: block;
+  font-size: .75em;
+}
+
+.up-vote, .down-vote, #title, #body, #search {
+  outline: 0;
 }
 
 #title, #body, #save, #search {
@@ -89,31 +108,7 @@ ul {
   height: 30px;
 }
 
-.vote {
-  border: none;
-}
-
-.importance-level {
-  color: #6d6e71;
-  font-size: 14px;
-  margin: 10px 0px 0px 8px;
-}
-
-.completed {
-  opacity: 0.2;
-}
-
-.body-char {
-  padding: 2px;
-  text-align: center;
-  color: #481f61;
-  display: block;
-  font-size: .75em;
-}
-
-
 // flex containers
-
 @mixin flexbox() {
   display: -webkit-box;
   display: -moz-box;
@@ -185,7 +180,6 @@ ul {
     justify-content:flex-start;
     margin-right: 20px;
     width: $main-width;
-
   }
   .filter-button {
     padding: 2px;

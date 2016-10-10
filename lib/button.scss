@@ -59,12 +59,6 @@ $button-border: 1px solid black;
   background: url('../images/buttons-sprite-with-hover.svg') no-repeat -90px -35px;
 }
 
-#toggle-completed {
-  @include pill-button;
-  width: $extra-large-button-width;
-  height: 50px;
-}
-
 .filter-button {
   @include pill-button;
   width: 50px;
@@ -78,6 +72,13 @@ $button-border: 1px solid black;
   height: $button-field-height;
   font-size: $font-size-small;
   margin: 2px;
+}
+
+#toggle-completed {
+  @include pill-button;
+  width: $extra-large-button-width;
+  height: 50px;
+  padding: 4px;
 }
 
 #show-more-tasks {
