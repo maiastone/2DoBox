@@ -17,4 +17,4 @@ The application has no aXe-core violations, is fully functional without using a 
 $ git clone https://github.com/maiastone/2DoBox.git   
 Open index.html in the browser   
 
-[Screenshot]('')
+[Screenshot]
