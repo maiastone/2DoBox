@@ -12,3 +12,9 @@ The application is pleasant, logical, and easy to use. The application is fully 
 
 **Accessibility Specs**   
 The application has no aXe-core violations, is fully functional without using a mouse, and the application uses HTML/CSS to ‘chunk’ content into more manageable pieces. The application utilizes semantic HTML.
+
+###Installation
+$ git clone https://github.com/maiastone/2DoBox.git
+Open index.html in the browser.
+
+[Screenshot]('./screenshot.png')
