@@ -1,7 +1,5 @@
 ##2DoBox Pivot
 
-[GitHub](https://github.com/maiastone/2DoBox)   
-[Original Assignment](http://frontend.turing.io/projects/2DoBox-Pivot)
 
 ###The application consists of one page with all of the major functionality being provided by jQuery.   
 
@@ -17,4 +15,4 @@ The application has no aXe-core violations, is fully functional without using a 
 $ git clone https://github.com/maiastone/2DoBox.git   
 Open index.html in the browser   
 
-[Screenshot]
+[Screenshot]('./Screenshot.png')
